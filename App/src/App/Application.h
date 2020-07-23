@@ -1,7 +1,5 @@
 #pragma once
 
-#include "DatabaseHandler.h"
-
 /**
 * Client Application class
 */
@@ -27,10 +25,5 @@ private:
 	* Set it to false to exit the program.
 	*/
 	bool m_Running;
-
-	/**
-	* Database Handler class for database operations
-	*/
-	DatabaseHandler dbHandler;
 };
 

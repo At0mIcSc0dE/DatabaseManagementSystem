@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DBMS/DatabaseManagementSystem.h"
+#include "QRD/QRD.h"
 
 #define BIT(x) (1 << x)
 
@@ -44,11 +44,6 @@ private:
 	* @returns true if flag is in flags else false
 	*/
 	bool HasFlag(int flags, Flags flag);
-
-	/**
-	* Database manager from DatabaseManagementSystem project
-	*/
-	DBMS::DBManager dbManager;
 
 };
 

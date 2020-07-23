@@ -1,14 +1,15 @@
 #include "Application.h"
 
+
+
 Application::Application(const char* filePath)
-	: m_Running(true), dbHandler(filePath)
+	: m_Running(true)
 {
 }
 
 void Application::Run()
 {
-	//while (m_Running)
-	//{
-		dbHandler.CreateTable("[TABLENAME]", ALLOW_DUPLICATE);
-	//}
+	while (m_Running)
+	{
+	}
 }
