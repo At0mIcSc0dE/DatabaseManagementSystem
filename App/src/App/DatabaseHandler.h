@@ -24,6 +24,15 @@ class DatabaseHandler
 {
 
 public:
+	/**
+	* Constructor for DatabaseHandler class
+	*
+	* @param filePath is the path to the .dbs file
+	* @returns a new DatabaseHandler object
+	*/
+	DatabaseHandler(const char* filePath);
+
+
 	void CreateTable(const char* tableName, int flags = 0);
 
 private:
@@ -35,6 +44,11 @@ private:
 	* @returns true if flag is in flags else false
 	*/
 	bool HasFlag(int flags, Flags flag);
+
+	/**
+	* Database manager from DatabaseManagementSystem project
+	*/
+	DBMS::DBManager dbManager;
 
 };
 

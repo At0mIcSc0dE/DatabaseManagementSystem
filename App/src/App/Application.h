@@ -10,9 +10,11 @@ class Application
 public:
 	/**
 	* Constructor for application
+	*
+	* @param filePath is the path to the .dbs file
 	* @return a new application object
 	*/
-	Application();
+	Application(const char* filePath);
 
 	/**
 	* Function to enter the program's run loop
@@ -25,5 +27,10 @@ private:
 	* Set it to false to exit the program.
 	*/
 	bool m_Running;
+
+	/**
+	* Database Handler class for database operations
+	*/
+	DatabaseHandler dbHandler;
 };
 
