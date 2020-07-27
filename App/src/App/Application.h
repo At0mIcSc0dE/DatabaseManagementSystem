@@ -1,5 +1,8 @@
 #pragma once
 
+#include "QRD/QRD.h"
+
+
 /**
 * Client Application class
 */
@@ -25,5 +28,10 @@ private:
 	* Set it to false to exit the program.
 	*/
 	bool m_Running;
+
+	/**
+	* The main database object from the dll
+	*/
+	QRD::QRDDB m_Database;
 };
 

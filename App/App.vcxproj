@@ -179,12 +179,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\App\DatabaseHandler.cpp" />
     <ClCompile Include="src\App\Application.cpp" />
     <ClCompile Include="src\App\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\App\DatabaseHandler.h" />
     <ClInclude Include="src\App\Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

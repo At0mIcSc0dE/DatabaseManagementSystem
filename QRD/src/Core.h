@@ -2,7 +2,8 @@
 
 
 #ifdef DBMS_BUILD
-	#define DBMS_API __declspec(dllexport)
+	#define QRD_API __declspec(dllexport)
 #else
-	#define DBMS_API __declspec(dllimport)
+	#define QRD_API __declspec(dllimport)
 #endif
+

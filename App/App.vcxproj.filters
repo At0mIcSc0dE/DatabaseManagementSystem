@@ -21,15 +21,9 @@
     <ClCompile Include="src\App\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\App\DatabaseHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\App\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\App\DatabaseHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
