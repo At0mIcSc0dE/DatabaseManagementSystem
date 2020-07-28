@@ -15,7 +15,7 @@ public:
 	* @param filePath is the path to the .dbs file
 	* @return a new application object
 	*/
-	Application(const char* filePath);
+	Application(const std::string& filePath);
 
 	/**
 	* Function to enter the program's run loop

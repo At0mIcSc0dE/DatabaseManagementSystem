@@ -5,6 +5,8 @@
     <ClCompile Include="src\QRD\QRDDB.cpp" />
     <ClCompile Include="src\QRD\QRDObjects\Table.cpp" />
     <ClCompile Include="src\QRD\QRDObjects\Record.cpp" />
+    <ClCompile Include="src\QRD\QRDObjects\Column.cpp" />
+    <ClCompile Include="src\QRD\QRDObjects\QRDObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h" />
@@ -15,5 +17,6 @@
     <ClInclude Include="src\QRD\QRDObjects\Table.h" />
     <ClInclude Include="src\QRD\QRDObjects\Record.h" />
     <ClInclude Include="src\QRD\QRDFlags.h" />
+    <ClInclude Include="src\QRD\QRDObjects\Column.h" />
   </ItemGroup>
 </Project>

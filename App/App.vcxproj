@@ -105,7 +105,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\DatabaseManagementSystem\DatabaseManagementSystem.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
+      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\QRD\QRD.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,7 +127,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\DatabaseManagementSystem\DatabaseManagementSystem.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
+      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\QRD\QRD.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -145,7 +145,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\DatabaseManagementSystem\DatabaseManagementSystem.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
+      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\QRD\QRD.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -167,7 +167,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\DatabaseManagementSystem\DatabaseManagementSystem.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
+      <Command>copy $(SolutionDir)\bin\$(Configuration)-$(Platform)\QRD\QRD.dll $(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

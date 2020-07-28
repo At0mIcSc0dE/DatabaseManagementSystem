@@ -27,7 +27,7 @@ namespace QRD
 		QRDFlags(const FlagTypes flag)
 			: m_Flags(0)
 		{
-			m_Flags | flag;
+			m_Flags |= flag;
 		}
 
 		/**
@@ -38,7 +38,7 @@ namespace QRD
 		QRDFlags(const QRDFlag flag)
 			: m_Flags(0)
 		{
-			m_Flags | flag;
+			m_Flags |= flag;
 		}
 
 		/**
