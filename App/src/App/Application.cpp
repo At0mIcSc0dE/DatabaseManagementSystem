@@ -26,6 +26,9 @@ void Application::Run()
 		// Add the age to the table
 		QRD::Record rec = table.AddRecord(age);
 
+		//Skipping first, second and forth column from being searched
+		std::tuple<QRD::Record&> recs = table.GetRecord(QRD_NULL, QRD_NULL, "Hello", QRD_NULL, 3);
+
 
 		//QRD::Column col = table.AddColumn<QRD::TEXT>("gd");
 		//QRD::Column colI = table.InsertColumn<QRD::TEXT>("COLANE", 2);

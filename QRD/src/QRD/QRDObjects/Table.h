@@ -49,7 +49,7 @@ namespace QRD
 		/**
 		* Returns the record where the arguments match the ones in the datase
 		*
-		* @param args are the arguments to identify the record
+		* @param args are the arguments to identify the record, pass in QRD_NULL for every column that shouldn't be checked
 		* @warning currently no way to only check e.g. 2nd and 4th column. We need to be able to know which column should be checked
 		*/
 		template<typename... Args>
