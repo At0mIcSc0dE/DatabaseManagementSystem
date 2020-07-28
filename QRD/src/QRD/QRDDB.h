@@ -54,9 +54,9 @@ namespace QRD
 
 	private:
 		/**
-		* Datastructure which holds all Records which need to be written to the file
+		* Datastructure holding all Records which need to be written to the file
 		*/
-		//std::unordered_map<Table, std::vector<Record>> m_Data;
+		static std::unordered_map<Table, std::vector<Record>> m_Data;
 
 	};
 }

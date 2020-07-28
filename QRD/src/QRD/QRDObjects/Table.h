@@ -71,13 +71,13 @@ namespace QRD
 	template<typename COL_DATA_TYPE>
 	Column&& Table::AddColumn(const std::string& columnName)
 	{
-		return Column();
+		return Column(columnName);
 	}
 
 	template<typename COL_DATA_TYPE>
 	Column&& Table::InsertColumn(const std::string& columnName, const unsigned short index)
 	{
-		return Column();
+		return Column(columnName);
 	}
 
 	template<typename... Args>
