@@ -13,7 +13,7 @@ namespace Calculator
 	Timer::~Timer()
 	{
 		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - m_Start).count();
-		CL_LOG(m_Text + std::to_string(duration) + std::string("us"));
+		QRD_LOG(m_Text + std::to_string(duration) + std::string("us"));
 	}
 }
 

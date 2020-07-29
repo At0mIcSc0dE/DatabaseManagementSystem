@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Core.h"
+#include "Base.h"
 #include "QRDObject.h"
 #include "Record.h"
 #include "Column.h"
+#include "QRD/Debug/Logger.h"
 
 
 namespace QRD
@@ -53,7 +54,7 @@ namespace QRD
 		* @warning currently no way to only check e.g. 2nd and 4th column. We need to be able to know which column should be checked
 		*/
 		template<typename... Args>
-		std::tuple<Record&>&& GetRecord(const Args&... args);
+		std::tuple<Record>&& GetRecord(const Args&... args);
 
 		/**
 		* Properly deletes the table, leaves you with empty table, column and record objects
@@ -71,28 +72,42 @@ namespace QRD
 	template<typename COL_DATA_TYPE>
 	Column&& Table::AddColumn(const std::string& columnName)
 	{
-		return Column(columnName);
+		Column col = Column(columnName);
+		return std::move(col);
 	}
 
 	template<typename COL_DATA_TYPE>
 	Column&& Table::InsertColumn(const std::string& columnName, const unsigned short index)
 	{
-		return Column(columnName);
+		Column col = Column(columnName);
+		return std::move(col);
 	}
 
 	template<typename... Args>
 	Record&& Table::AddRecord(const Args&... args)
 	{
-		return Record();
+		Record rec = Record();
+		return std::move(rec);
+	}
+
+	template<typename T>
+	inline void func(const T& arg)
+	{
+		if ((unsigned int)arg == QRD_NULL)
+		{
+			return;
+		}
 	}
 
 	template<typename... Args>
-	std::tuple<Record&>&& Table::GetRecord(const Args&... args)
+	std::tuple<Record>&& Table::GetRecord(const Args&... args)
 	{
 		std::tuple<Record> records = {};
-		
+		(func(args), ...);
+
 		return std::move(records);
 	}
+
 
 }
 

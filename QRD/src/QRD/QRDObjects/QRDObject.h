@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "Base.h"
 #include "pch.h"
 
 
@@ -20,6 +20,11 @@ namespace QRD
 		* File path to the .dbs file
 		*/
 		static std::string m_DBFilePath;
+
+		/**
+		* Datastructure holding all Records which need to be written to the file
+		*/
+		static std::unordered_map<Table*, std::vector<Record*>> m_Data;
 	};
 
 }

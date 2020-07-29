@@ -1,10 +1,15 @@
 #pragma once
 
+#define QRD_DYNAMIC_LIBRARY 0
 
-#ifdef DBMS_BUILD
-	#define QRD_API __declspec(dllexport)
+#if QRD_DYNAMIC_LIBRARY
+	#ifdef DBMS_BUILD
+		#define QRD_API __declspec(dllexport)
+	#else
+		#define QRD_API __declspec(dllimport)
+	#endif
 #else
-	#define QRD_API __declspec(dllimport)
+	#define QRD_API
 #endif
 
 /**
@@ -17,7 +22,7 @@
 * Passed into QRD::Table::GetRecord if column should be skipped
 * @warning if the user searches for the value defined in QRD_NULL QRD won't actually search for it
 */
-#define QRD_NULL 0xFFFFFFFFF
+#define QRD_NULL 0xCFAFBFFF
 
 
 

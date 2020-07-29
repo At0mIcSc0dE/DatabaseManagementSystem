@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "Base.h"
 #include "QRDObjects/Table.h"
 #include "QRDObjects/Record.h"
 
@@ -8,7 +8,7 @@
 
 namespace QRD
 {
-	class QRD_API QRDDB
+	class QRD_API QRDDB : public QRDObject
 	{
 	public:
 		/**
@@ -36,7 +36,7 @@ namespace QRD
 		Table&& GetTable(const std::string& tableName);
 
 		/**
-		* Reads from the .dbs file and populates m_Data, usually doesn't have to be called by the client
+		* Reads from the .dbs file and populates QRD::QRDObject::m_Data, usually doesn't have to be called by the client
 		*/
 		void Read();
 
@@ -53,10 +53,6 @@ namespace QRD
 
 
 	private:
-		/**
-		* Datastructure holding all Records which need to be written to the file
-		*/
-		static std::unordered_map<Table, std::vector<Record>> m_Data;
 
 	};
 }

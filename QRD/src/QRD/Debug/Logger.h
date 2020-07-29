@@ -1,10 +1,13 @@
 #pragma once
 
 #include "pch.h"
-#include "Core.h"
+#include "Base.h"
+#include <fstream>
+#include <ctime>
+#include <sstream>
 
 
-namespace Calculator
+namespace QRD
 {
 
 	class QRD_API Logger
@@ -12,16 +15,37 @@ namespace Calculator
 	public:
 		static void Init(const std::string& filepath);
 
-		static void Log(const std::string& message, const std::string& filepath);
+		template<typename T>
+		static void Log(const T& message, const std::string& filepath);
 	};
+
+	template<typename T>
+	void Logger::Log(const T& message, const std::string& filepath)
+	{
+		std::ofstream stream(filepath, std::ios_base::app);
+		std::time_t t = std::time(0);
+		std::tm* now = std::localtime(&t);
+		std::stringstream ss;
+		ss << message;
+
+		stream << '[' << now->tm_hour << ':' << now->tm_min << ':' << round(now->tm_sec) << "]: " << ss.str() << '\n';
+
+		stream.close();
+	}
 
 }
 
 
 #if QRD_LOG_ACTIVE
-	#define CL_LOG(text) Calculator::Logger::Log(text, "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
-	#define CL_CLEAR() Calculator::Logger::Init("D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
+	//#define QRD_LOG(text, type) Calculator::Logger::Log<type>(text, "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
+	template<typename T>	
+	inline void QRD_LOG(const T& text)
+	{
+		QRD::Logger::Log((*(T*)&text), "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt");
+	}
+	#define QRD_CLEAR() Calculator::Logger::Init("D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
 #else
-	#define CL_LOG(text)
-	#define CL_CLEAR()
+	inline void QRD_LOG(const T& text) {}
+	//#define QRD_LOG(text)
+	#define QRD_CLEAR()
 #endif

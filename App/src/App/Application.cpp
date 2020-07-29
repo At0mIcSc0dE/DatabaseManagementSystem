@@ -20,14 +20,15 @@ void Application::Run()
 	
 	while (m_Running)
 	{
-		std::cout << "Enter your age: ";
-		std::cin >> age;
+		std::cout << "Enter your age: \n";
+		//std::cin >> age;
+		age = 15;
 		
 		// Add the age to the table
 		QRD::Record rec = table.AddRecord(age);
 
 		//Skipping first, second and forth column from being searched
-		std::tuple<QRD::Record&> recs = table.GetRecord(QRD_NULL, QRD_NULL, "Hello", QRD_NULL, 3);
+		std::tuple<QRD::Record> recs = table.GetRecord(QRD_NULL, QRD_NULL, "Hello", QRD_NULL, 3);
 
 
 		//QRD::Column col = table.AddColumn<QRD::TEXT>("gd");
