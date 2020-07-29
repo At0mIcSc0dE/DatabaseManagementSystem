@@ -4,6 +4,7 @@
 #include "QRDObject.h"
 #include "Record.h"
 #include "Column.h"
+#include "Field.h"
 #include "QRD/Debug/Logger.h"
 
 
@@ -27,7 +28,6 @@ namespace QRD
 		* 
 		* @param columnName is the name of the column under which it'll be saved
 		*/
-		template<typename COL_DATA_TYPE>
 		Column&& AddColumn(const std::string& columnName);
 
 		/**
@@ -36,8 +36,25 @@ namespace QRD
 		* @param columnName is the name of the column under which it'll be saved
 		* @param index is the position where the new column should be inserted at. Indices start from 0
 		*/
-		template<typename COL_DATA_TYPE>
 		Column&& InsertColumn(const std::string& columnName, const unsigned short index);
+
+		/**
+		* Adds a new field as the last field of the table
+		*
+		* @param fieldName is the name of the field
+		*/
+		template<const QRDTypes& FIELD_DATA_TYPE>
+		Field&& AddField(const std::string& fieldName);
+
+		/**
+		* Adds a new field in position index
+		*
+		* @param fieldName is the name of the field
+		* @param index is the position where the field should be inserted
+		* @returns a new Field object
+		*/
+		template<const QRDTypes& FIELD_DATA_TYPE>
+		Field&& InsertField(const std::string& fieldName, const unsigned short index);
 
 		/**
 		* Adds a new record to the table
@@ -65,22 +82,37 @@ namespace QRD
 		/**
 		* Datastructure for all columns in this table
 		*/
-		//std::vector<Column> m_Columns;
+		std::vector<Column> m_Columns;
+
+		/**
+		* Datastructure for all fields in this table
+		*/
+		std::vector<Field> m_Fields;
 	};
 
 
-	template<typename COL_DATA_TYPE>
 	Column&& Table::AddColumn(const std::string& columnName)
 	{
 		Column col = Column(columnName);
 		return std::move(col);
 	}
 
-	template<typename COL_DATA_TYPE>
 	Column&& Table::InsertColumn(const std::string& columnName, const unsigned short index)
 	{
 		Column col = Column(columnName);
 		return std::move(col);
+	}
+
+	template<const QRDTypes& FIELD_DATA_TYPE>
+	inline Field&& Table::AddField(const std::string& fieldName)
+	{
+		return Field && ();
+	}
+
+	template<const QRDTypes& FIELD_DATA_TYPE>
+	inline Field&& Table::InsertField(const std::string& fieldName, const unsigned short index)
+	{
+		return Field && ();
 	}
 
 	template<typename... Args>

@@ -9,6 +9,7 @@
     <ClCompile Include="src\QRD\QRDObjects\QRDObject.cpp" />
     <ClCompile Include="src\QRD\Debug\Logger.cpp" />
     <ClCompile Include="src\QRD\Debug\Timer.cpp" />
+    <ClCompile Include="src\QRD\QRDObjects\Field.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
@@ -22,5 +23,6 @@
     <ClInclude Include="src\QRD\Debug\Logger.h" />
     <ClInclude Include="src\QRD\Debug\Timer.h" />
     <ClInclude Include="src\Base.h" />
+    <ClInclude Include="src\QRD\QRDObjects\Field.h" />
   </ItemGroup>
 </Project>

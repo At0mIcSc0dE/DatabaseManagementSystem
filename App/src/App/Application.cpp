@@ -16,8 +16,9 @@ void Application::Run()
 	//QRD::Table table2 = m_Database.GetTable("Table1");
 
 	//Add column Age to the table
-	table.AddColumn<QRD::TEXT>("Age");
-	
+	table.AddColumn("Age");
+	table.AddField<QRD::INTEGER>("HE");
+
 	while (m_Running)
 	{
 		std::cout << "Enter your age: \n";
