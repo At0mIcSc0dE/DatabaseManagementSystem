@@ -28,73 +28,71 @@ namespace QRD
         std::fstream reader(m_DBFilePath);
 
         std::string line;
-        while (reader.good())
+        std::getline(reader, line);
+        if (line.find("TABLE ") != std::string::npos)
         {
+            Table* table = new Table(line.replace(0, 6, ""));
+
+            // Get the next lines (COLUMS, {, 1stCol)
             std::getline(reader, line);
-            if (line.find("TABLE ") != std::string::npos)
+            std::getline(reader, line);
+            std::getline(reader, line);
+            
+            // Loop over every column and add them to table
+            while (line != "}")
             {
-                Table table(line.replace(0, 6, ""));
-
-                // Get the next line (Columns)
+                table->AddColumn(line);
                 std::getline(reader, line);
-                
-                //Loop over every column separated by comma
-                line = line.replace(0, 8, "");
-                std::string colName = "";
-                unsigned short colIndex = 0;
-                
-                for (unsigned short i = 0; i < std::count(line.begin(), line.end() + 2, ','); ++i)
+            }
+
+            // Get the next lines (FIELDS, {, 1stField)
+            std::getline(reader, line);
+            std::getline(reader, line);
+            std::getline(reader, line);
+
+            // Loop over every field and add them to table
+            while (line != "}")
+            {
+                // If line after : is a I (Integer)
+                if (line[line.size() - 7] == 'I')
                 {
-                    if (line[i] == ',')
-                    {
-                        table.AddColumn(colName);
-                        colName = "";
-                        continue;
-                    }
-                    colName += line[i];
+                    table->AddField<QRD_INTEGER>(line.replace(line.size() - 8, line.size() - 1, ""));
+                }
+                else
+                {
+                    table->AddField<QRD_TEXT>(line.replace(line.size() - 4, line.size() - 1, ""));
                 }
 
-                // Get the next line (Fields)
                 std::getline(reader, line);
+            }
 
-                line = line.replace(0, 7, "");
-                std::string fieldName = "";
-                unsigned short colIndex = 0;
-                QRDTypes type = QRD_NULLTYPE;
+            // Insert the table into m_Data
+            m_Data.insert({ table, {} });
 
-                for (unsigned short i = 0; i < std::count(line.begin(), line.end() + 2, ','); ++i)
+            // Get amount of records
+            std::getline(reader, line);
+            unsigned int amntOfRecs = std::stoi(line.replace(0, 8, ""));
+
+            // Get the lines (RECORD, {, 1stRec)
+            std::getline(reader, line);
+            std::getline(reader, line);
+            std::getline(reader, line);
+
+            for (unsigned int recNum = 0; recNum < amntOfRecs; ++recNum)
+            {
+                m_Data[table].emplace_back(&Record());
+                while (line != "}")
                 {
-                    if (line[i] == ',')
-                    {
-                        table.AddField<type>(fieldName);
-                        fieldName = "";
-                        type = QRD_NULLTYPE;
-                        continue;
-                    }
-                    else if (line[i] == ':')
-                    {
-                        if (line[i + 1] == 'I')
-                        {
-                            type = QRD_TEXT;
-                            // Skip TEXT in line
-                            i += 4;
-                        }
-                        else
-                        {
-                            type = QRD_INTEGER;
-                            // Skip INTEGER in line
-                            i += 7;
-                        }
-                    }
-                    colName += line[i];
+                    m_Data[table][recNum]->AddData(line.replace(0, 4, ""));
+                    std::getline(reader, line);
                 }
-
-                // Get amount of records
-
-                m_Data.insert({ std::move(&table), {} });
+                std::getline(reader, line);
+                std::getline(reader, line);
+                std::getline(reader, line);
             }
         }
     }
+
 
     void QRDDB::Write()
     {

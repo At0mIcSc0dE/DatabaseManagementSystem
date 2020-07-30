@@ -31,8 +31,8 @@ namespace QRD
 	/**
 	* SQL types
 	*/
-	typedef const char* QRD_TEXT;
-	typedef const int QRD_INTEGER;
+	typedef const char* TEXT;
+	typedef const int INTEGER;
 
 	enum QRDTypes
 	{

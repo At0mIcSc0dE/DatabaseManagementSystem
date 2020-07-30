@@ -10,8 +10,13 @@ namespace QRD
 	class QRD_API Field : public QRDObject
 	{
 	public:
-		template<typename FIELD_DATA_TYPE>
-		Field(const std::string& fieldName);
+		/**
+		* Constructor for Field object
+		*
+		* @param fieldName is the name of the field
+		* @param fieldDataType is the QRD_TYPE of the field
+		*/
+		Field(const std::string& fieldName, QRDTypes fieldDataType);
 
 		/**
 		* Changes the name of the field
@@ -27,11 +32,6 @@ namespace QRD
 	
 	};
 
-
-	template<typename FIELD_DATA_TYPE>
-	inline Field::Field(const std::string& fieldName)
-	{
-	}
 }
 
 

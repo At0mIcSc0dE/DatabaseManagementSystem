@@ -43,7 +43,7 @@ namespace QRD
 		*
 		* @param fieldName is the name of the field
 		*/
-		template<const QRDTypes& FIELD_DATA_TYPE>
+		template<QRDTypes FIELD_DATA_TYPE>
 		Field&& AddField(const std::string& fieldName);
 
 		/**
@@ -53,7 +53,7 @@ namespace QRD
 		* @param index is the position where the field should be inserted
 		* @returns a new Field object
 		*/
-		template<const QRDTypes& FIELD_DATA_TYPE>
+		template<QRDTypes FIELD_DATA_TYPE>
 		Field&& InsertField(const std::string& fieldName, const unsigned short index);
 
 		/**
@@ -91,28 +91,20 @@ namespace QRD
 	};
 
 
-	Column&& Table::AddColumn(const std::string& columnName)
-	{
-		Column col = Column(columnName);
-		return std::move(col);
-	}
-
-	Column&& Table::InsertColumn(const std::string& columnName, const unsigned short index)
-	{
-		Column col = Column(columnName);
-		return std::move(col);
-	}
-
-	template<const QRDTypes& FIELD_DATA_TYPE>
+	template<QRDTypes FIELD_DATA_TYPE>
 	inline Field&& Table::AddField(const std::string& fieldName)
 	{
-		return Field && ();
+		Field field(fieldName, QRD_TEXT);
+		m_Fields.emplace_back(field);
+		return std::move(field);
 	}
 
-	template<const QRDTypes& FIELD_DATA_TYPE>
+	template<QRDTypes FIELD_DATA_TYPE>
 	inline Field&& Table::InsertField(const std::string& fieldName, const unsigned short index)
 	{
-		return Field && ();
+		Field field(fieldName, QRD_TEXT);
+		m_Fields.emplace_back(field);
+		return std::move(field);
 	}
 
 	template<typename... Args>

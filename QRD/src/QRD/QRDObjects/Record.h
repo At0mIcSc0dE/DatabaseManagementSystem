@@ -10,6 +10,14 @@ namespace QRD
 	{
 	public:
 		/**
+		* Sets single data in Record
+		*
+		* @param args is the data to be stored
+		*/
+		template<typename... Args>
+		void AddData(Args... args);
+
+		/**
 		* Edits the record
 		*
 		* @param args are the arguments to fill the row again
@@ -18,6 +26,12 @@ namespace QRD
 		//void EditRecord(Args... args);
 
 	};
+
+	template<typename ...Args>
+	inline void Record::AddData(Args ...args)
+	{
+
+	}
 
 }
 

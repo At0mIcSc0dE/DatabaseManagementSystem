@@ -17,7 +17,7 @@ void Application::Run()
 
 	//Add column Age to the table
 	table.AddColumn("Age");
-	table.AddField<QRD::INTEGER>("HE");
+	table.AddField<QRD::QRD_INTEGER>("HE");
 
 	while (m_Running)
 	{

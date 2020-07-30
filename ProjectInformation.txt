@@ -2,10 +2,15 @@ I needed a DBMS for my ExpenseTracker aplication but I didn't need any security 
 I tried using an old sqlite library written in C but didn't like the way it worked. After completing the above mentioned project using JSON I wanted to make a library to simplify this for the future
 
 This DBMS will only write to a file when the user asks it to. Data that is added while the program is running will be stored in memory.
+	Advantages:
+		--> Fast read/write speed
+	Disadvantages:
+		--> Limited db storage (DBMS intended for small databases)
 Once the user calls QRD::QRDDB::Write() the data will be written to the file.
 The DBMS will only read or write if the user explicitly calls QRD::QRDDB::Read() or QRD::QRDDB::Write() and once when the QRDDB object is constructed
 I never really liked SQL strings (CREATE TABLE IF NOT EXISTS...) so I decided to try and write this library without any of those. (I actually quite like these string commands now)
 
 New things in this project:
 	C++17 folding expression and more variadic template arguments
+	Types as template arguments
 	
