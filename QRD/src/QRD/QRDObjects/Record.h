@@ -25,12 +25,18 @@ namespace QRD
 		//template<typename... Args>
 		//void EditRecord(Args... args);
 
+	private:
+		/**********************
+		**       DEBUG       **
+		***********************/
+		std::vector<void*> m_RecordData;
+
 	};
 
 	template<typename ...Args>
 	inline void Record::AddData(Args ...args)
 	{
-
+		(m_RecordData.emplace_back((void*)&args), ...);
 	}
 
 }

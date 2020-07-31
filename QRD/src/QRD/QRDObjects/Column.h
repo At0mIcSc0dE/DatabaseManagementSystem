@@ -19,17 +19,20 @@ namespace QRD
 		/**
 		* Changes the column name
 		*
-		* @param oldColumnName is the column name which should be switched with new one
 		* @param newColumnName is the new column name of the column
 		*/
-		void EditColumn(const std::string& oldColumnName, const std::string& newColumnName);
+		void EditColumn(const std::string& newColumnName);
 		
 		/**
-		* Removes column with given name
-		*
-		* @param columnName is the name of the column which should be removed
+		* Deletes current column
 		*/
-		void DeleteColumn(const std::string& columnName);
+		void DeleteColumn();
+
+	private:
+		/**********************
+		**       DEBUG       **
+		***********************/
+		const std::string& m_ColumnName;
 
 	};
 }

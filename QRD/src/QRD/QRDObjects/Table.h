@@ -88,6 +88,11 @@ namespace QRD
 		* Datastructure for all fields in this table
 		*/
 		std::vector<Field> m_Fields;
+
+		/**********************
+		**       DEBUG       **
+		***********************/
+		const std::string& m_TableName;
 	};
 
 

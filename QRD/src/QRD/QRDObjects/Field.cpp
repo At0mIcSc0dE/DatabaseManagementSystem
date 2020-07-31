@@ -5,6 +5,7 @@
 namespace QRD
 {
 	Field::Field(const std::string& fieldName, QRDTypes fieldDataType)
+		: m_FieldName(fieldName)
 	{
 
 	}

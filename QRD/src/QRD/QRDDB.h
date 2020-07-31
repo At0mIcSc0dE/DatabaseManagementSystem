@@ -51,6 +51,10 @@ namespace QRD
 		*/
 		void ExitQRD();
 
+		/**********************
+		**       DEBUG       **
+		***********************/
+		auto& GetData() { return m_Data; }
 
 	private:
 

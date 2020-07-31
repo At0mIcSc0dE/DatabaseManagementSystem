@@ -30,6 +30,8 @@ namespace QRD
 		*/
 		void DeleteField();
 	
+	private:
+		const std::string& m_FieldName;
 	};
 
 }

@@ -5,6 +5,7 @@
 namespace QRD
 {
 	Table::Table(const std::string& tableName)
+		: m_TableName(tableName)
 	{
 
 	}
