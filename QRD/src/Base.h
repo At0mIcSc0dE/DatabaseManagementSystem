@@ -1,6 +1,6 @@
 #pragma once
 
-#define QRD_DYNAMIC_LIBRARY 0
+#define QRD_DYNAMIC_LIBRARY 1
 
 #if QRD_DYNAMIC_LIBRARY
 	#ifdef DBMS_BUILD
@@ -11,6 +11,12 @@
 #else
 	#define QRD_API
 #endif
+
+/**
+* Disable STL warning: class needs to have dll-interface to be used by client class
+*/
+#pragma warning(disable : 4251)
+
 
 /**
 * Set to 0 to disable logging or timing
