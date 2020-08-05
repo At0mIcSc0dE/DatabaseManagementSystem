@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Base.h"
-#include "QRDObject.h"
+
 
 
 namespace QRD
 {
-	class QRD_API Record : public QRDObject
+	class QRD_API Record
 	{
 	public:
 		/**
@@ -26,17 +26,13 @@ namespace QRD
 		//void EditRecord(Args... args);
 
 	private:
-		/**********************
-		**       DEBUG       **
-		***********************/
-		std::vector<void*> m_RecordData;
 
 	};
 
 	template<typename ...Args>
 	inline void Record::AddData(Args ...args)
 	{
-		(m_RecordData.emplace_back((void*)&args), ...);
+
 	}
 
 }

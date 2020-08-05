@@ -4,20 +4,8 @@
 
 namespace QRD
 {
-	Field::Field(const std::string& fieldName, QRDTypes fieldDataType)
-		: m_FieldName(fieldName)
+	Field::Field(const std::string& fieldName, const char type)
 	{
 
-	}
-
-	void Field::EditField(const std::string& newFieldName)
-	{
-
-	}
-
-	void Field::DeleteField()
-	{
 	}
 }
-
-

@@ -33,5 +33,7 @@ private:
 	* The main database object from the dll
 	*/
 	QRD::QRDDB m_Database;
+
+	std::unordered_map<std::string, std::vector<std::string>> m_Tables;
 };
 

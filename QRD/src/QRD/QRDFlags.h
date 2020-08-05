@@ -4,7 +4,6 @@
 
 #define BIT(x) (1 << x)
 
-
 namespace QRD
 {
 	typedef int QRDFlag;
@@ -52,7 +51,7 @@ namespace QRD
 		}
 
 	private:
-		int m_Flags;
+		QRDFlag m_Flags;
 	};
 }
 

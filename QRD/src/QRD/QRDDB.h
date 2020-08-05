@@ -8,7 +8,14 @@
 
 namespace QRD
 {
-	class QRD_API QRDDB : public QRDObject
+
+	struct TableDefinition
+	{
+		std::string tableName;
+		std::unordered_map<std::string, DBTypes> columns;
+	};
+
+	class QRD_API QRDDB
 	{
 	public:
 		/**
@@ -25,7 +32,7 @@ namespace QRD
 		* @param flags are flags to change creation of table
 		* @returns a new Table object
 		*/
-		Table&& AddTable(const std::string& tableName, const QRDFlags& flags);
+		Table& AddTable(const std::string& tableName, const QRDFlags& flags = FlagTypes::NONE);
 
 		/**
 		* Searches for the table with given table name
@@ -33,7 +40,7 @@ namespace QRD
 		* @param tableName is the name of the target table
 		* @returns a new Table object
 		*/
-		Table&& GetTable(const std::string& tableName);
+		Table& GetTable(const std::string& tableName);
 
 		/**
 		* Reads from the .dbs file and populates QRD::QRDObject::m_Data, usually doesn't have to be called by the client
@@ -50,14 +57,18 @@ namespace QRD
 	    * And to properly close all QRDObjects
 		*/
 		void ExitQRD();
+		
+		//void Create(std::unordered_map<std::string, std::vector<std::string>> data);
+
 
 		/**********************
 		**       DEBUG       **
 		***********************/
-		auto& GetData() { return m_Data; }
+		//auto& GetData() { return m_Data; }
 
 	private:
-
+		std::unordered_map<Table, std::vector<Record>> m_Data;
+		const std::string& m_DBFilePath;
 	};
 }
 

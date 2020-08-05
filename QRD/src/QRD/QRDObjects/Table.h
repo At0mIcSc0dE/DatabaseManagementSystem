@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Base.h"
-#include "QRDObject.h"
 #include "Record.h"
-#include "Column.h"
 #include "Field.h"
 #include "QRD/Debug/Logger.h"
 
@@ -13,7 +11,7 @@ namespace QRD
 	/**
 	* Class for the table object in databases
 	*/
-	class QRD_API Table : public QRDObject
+	class QRD_API Table
 	{
 	public:
 		/**
@@ -24,26 +22,11 @@ namespace QRD
 		Table(const std::string& tableName);
 
 		/**
-		* Adds a new Column to the table, new column will be the last
-		* 
-		* @param columnName is the name of the column under which it'll be saved
-		*/
-		Column&& AddColumn(const std::string& columnName);
-
-		/**
-		* Inserts a new Column to the table
-		*
-		* @param columnName is the name of the column under which it'll be saved
-		* @param index is the position where the new column should be inserted at. Indices start from 0
-		*/
-		Column&& InsertColumn(const std::string& columnName, const unsigned short index);
-
-		/**
 		* Adds a new field as the last field of the table
 		*
 		* @param fieldName is the name of the field
 		*/
-		template<QRDTypes FIELD_DATA_TYPE>
+		template<DBTypes FIELD_DATA_TYPE>
 		Field&& AddField(const std::string& fieldName);
 
 		/**
@@ -53,7 +36,7 @@ namespace QRD
 		* @param index is the position where the field should be inserted
 		* @returns a new Field object
 		*/
-		template<QRDTypes FIELD_DATA_TYPE>
+		template<DBTypes FIELD_DATA_TYPE>
 		Field&& InsertField(const std::string& fieldName, const unsigned short index);
 
 		/**
@@ -80,11 +63,6 @@ namespace QRD
 
 	private:
 		/**
-		* Datastructure for all columns in this table
-		*/
-		std::vector<Column> m_Columns;
-
-		/**
 		* Datastructure for all fields in this table
 		*/
 		std::vector<Field> m_Fields;
@@ -96,18 +74,18 @@ namespace QRD
 	};
 
 
-	template<QRDTypes FIELD_DATA_TYPE>
+	template<DBTypes FIELD_DATA_TYPE>
 	inline Field&& Table::AddField(const std::string& fieldName)
 	{
-		Field field(fieldName, QRD_TEXT);
+		Field field(fieldName, (char)FIELD_DATA_TYPE);
 		m_Fields.emplace_back(field);
 		return std::move(field);
 	}
 
-	template<QRDTypes FIELD_DATA_TYPE>
+	template<DBTypes FIELD_DATA_TYPE>
 	inline Field&& Table::InsertField(const std::string& fieldName, const unsigned short index)
 	{
-		Field field(fieldName, QRD_TEXT);
+		Field field(fieldName, (char)FIELD_DATA_TYPE);
 		m_Fields.emplace_back(field);
 		return std::move(field);
 	}
@@ -119,20 +97,11 @@ namespace QRD
 		return std::move(rec);
 	}
 
-	template<typename T>
-	inline void func(const T& arg)
-	{
-		if ((unsigned int)arg == QRD_NULL)
-		{
-			return;
-		}
-	}
-
 	template<typename... Args>
 	std::tuple<Record>&& Table::GetRecord(const Args&... args)
 	{
 		std::tuple<Record> records = {};
-		(func(args), ...);
+		//(func(args), ...);
 
 		return std::move(records);
 	}

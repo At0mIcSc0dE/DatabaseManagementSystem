@@ -167,22 +167,18 @@
     <ClInclude Include="src\QRD\QRDObjects\Field.h" />
     <ClInclude Include="src\QRD\Debug\Logger.h" />
     <ClInclude Include="src\QRD\Debug\Timer.h" />
-    <ClInclude Include="src\QRD\QRDObjects\Column.h" />
     <ClInclude Include="src\QRD\QRDFlags.h" />
     <ClInclude Include="src\QRD\QRDObjects\Record.h" />
     <ClInclude Include="src\QRD\QRDDB.h" />
     <ClInclude Include="src\Base.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\QRD\QRD.h" />
-    <ClInclude Include="src\QRD\QRDObjects\QRDObject.h" />
     <ClInclude Include="src\QRD\QRDObjects\Table.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\QRD\QRDObjects\Field.cpp" />
     <ClCompile Include="src\QRD\Debug\Logger.cpp" />
     <ClCompile Include="src\QRD\Debug\Timer.cpp" />
-    <ClCompile Include="src\QRD\QRDObjects\Column.cpp" />
-    <ClCompile Include="src\QRD\QRDObjects\QRDObject.cpp" />
     <ClCompile Include="src\QRD\QRDObjects\Record.cpp" />
     <ClCompile Include="src\QRD\QRDDB.cpp" />
     <ClCompile Include="src\pch.cpp">
