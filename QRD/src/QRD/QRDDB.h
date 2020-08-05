@@ -4,16 +4,10 @@
 #include "QRDObjects/Table.h"
 #include "QRDObjects/Record.h"
 
-#include "QRDFlags.h"
+#include "GlobalFlags.h"
 
 namespace QRD
 {
-
-	struct TableDefinition
-	{
-		std::string tableName;
-		std::unordered_map<std::string, DBTypes> columns;
-	};
 
 	class QRD_API QRDDB
 	{
@@ -32,7 +26,7 @@ namespace QRD
 		* @param flags are flags to change creation of table
 		* @returns a new Table object
 		*/
-		Table& AddTable(const std::string& tableName, const QRDFlags& flags = FlagTypes::NONE);
+		Table& AddTable(const std::string& tableName, const GlobalFlags& flags = FlagTypes::NONE);
 
 		/**
 		* Searches for the table with given table name
@@ -40,7 +34,7 @@ namespace QRD
 		* @param tableName is the name of the target table
 		* @returns a new Table object
 		*/
-		Table& GetTable(const std::string& tableName);
+		Table&& GetTable(const std::string& tableName);
 
 		/**
 		* Reads from the .dbs file and populates QRD::QRDObject::m_Data, usually doesn't have to be called by the client
@@ -67,7 +61,7 @@ namespace QRD
 		//auto& GetData() { return m_Data; }
 
 	private:
-		std::unordered_map<Table, std::vector<Record>> m_Data;
+		std::unordered_map<Table*, std::vector<Record*>> m_Data;
 		const std::string& m_DBFilePath;
 	};
 }

@@ -15,10 +15,10 @@
     <ClInclude Include="src\QRD\QRDDB.h" />
     <ClInclude Include="src\QRD\QRDObjects\Table.h" />
     <ClInclude Include="src\QRD\QRDObjects\Record.h" />
-    <ClInclude Include="src\QRD\QRDFlags.h" />
     <ClInclude Include="src\QRD\Debug\Logger.h" />
     <ClInclude Include="src\QRD\Debug\Timer.h" />
     <ClInclude Include="src\Base.h" />
     <ClInclude Include="src\QRD\QRDObjects\Field.h" />
+    <ClInclude Include="src\QRD\GlobalFlags.h" />
   </ItemGroup>
 </Project>

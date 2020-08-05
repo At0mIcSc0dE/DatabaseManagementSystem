@@ -6,7 +6,7 @@
 
 namespace QRD
 {
-	typedef int QRDFlag;
+	typedef int GlobalFlag;
 
 	enum FlagTypes
 	{
@@ -15,43 +15,43 @@ namespace QRD
 	};
 
 
-	class QRD_API QRDFlags
+	class QRD_API GlobalFlags
 	{
 	public:
 		/**
-		* Constructor for QRDFlags object
+		* Constructor for GlobalFlags object
 		*
 		* @param flag is a flag to be added to m_Flags
 		*/
-		QRDFlags(const FlagTypes flag)
+		GlobalFlags(const FlagTypes flag)
 			: m_Flags(0)
 		{
 			m_Flags |= flag;
 		}
 
 		/**
-		* Constructor for QRDFlags object
+		* Constructor for GlobalFlags object
 		*
 		* @param flag is a flag to be added to m_Flags
 		*/
-		QRDFlags(const QRDFlag flag)
+		GlobalFlags(const GlobalFlag flag)
 			: m_Flags(0)
 		{
 			m_Flags |= flag;
 		}
 
 		/**
-		* Checks if flag is conatined in QRDFLags object
+		* Checks if flag is conatined in GlobalFlags object
 		*
-		* returns true if flag in QRDFlags object else false
+		* returns true if flag in GlobalFlags object else false
 		*/
-		bool HasFlag(QRDFlag flag)
+		bool HasFlag(GlobalFlag flag)
 		{
 			return m_Flags & flag;
 		}
 
 	private:
-		QRDFlag m_Flags;
+		GlobalFlag m_Flags;
 	};
 }
 

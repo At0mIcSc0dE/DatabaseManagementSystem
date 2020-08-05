@@ -10,17 +10,16 @@ namespace QRD
         Read();
     }
 
-    Table& QRDDB::AddTable(const std::string& tableName, const QRDFlags& flags)
+    Table& QRDDB::AddTable(const std::string& tableName, const GlobalFlags& flags)
     {
-        Table table = Table(tableName);
+        Table* table = new Table(tableName);
         m_Data.insert({table, {}});
-        return table;
+        return *table;
     }
 
-    Table& QRDDB::GetTable(const std::string& tableName)
+    Table&& QRDDB::GetTable(const std::string& tableName)
     {
-        Table table = Table(tableName);
-        return table;
+        return Table(tableName);
     }
 
     void QRDDB::Read()
@@ -29,68 +28,48 @@ namespace QRD
 
         std::string line;
         std::getline(reader, line);
-        if (line.find("TABLE ") != std::string::npos)
+        if (line.find("TABLE: ") != std::string::npos)
         {
-            this->AddTable(line.replace(0, 6, ""));
-            //Table* table = new Table(line.replace(0, 6, ""));
+            Table& table = this->AddTable(line.replace(0, 7, ""));
 
-            //// Get the next lines (COLUMS, {, 1stCol)
-            //std::getline(reader, line);
-            //std::getline(reader, line);
-            //std::getline(reader, line);
-            //
-            //// Loop over every column and add them to table
-            //while (line != "}")
-            //{
-            //    table->AddColumn(line);
-            //    std::getline(reader, line);
-            //}
+            std::getline(reader, line);
+            std::getline(reader, line);
+            std::getline(reader, line);
 
-            //// Get the next lines (FIELDS, {, 1stField)
-            //std::getline(reader, line);
-            //std::getline(reader, line);
-            //std::getline(reader, line);
+            while (line != "}")
+            {
+                unsigned char datatypeIndex = (unsigned char)line.find(":") + 1;
+                if (line[datatypeIndex] == 'I')
+                    table.AddField<INTEGER_TYPE>(line);
+                else if (line[datatypeIndex] == 'T')
+                    table.AddField<TEXT_TYPE>(line);
 
-            //// Loop over every field and add them to table
-            //while (line != "}")
-            //{
-            //    // If line after : is a I (Integer)
-            //    if (line[line.size() - 7] == 'I')
-            //    {
-            //        table->AddField<QRD_INTEGER>(line.replace(line.size() - 8, line.size() - 1, ""));
-            //    }
-            //    else
-            //    {
-            //        table->AddField<QRD_TEXT>(line.replace(line.size() - 4, line.size() - 1, ""));
-            //    }
+                std::getline(reader, line);
+            }
+            
+            std::getline(reader, line);
+            unsigned int numOfRecs = std::stoi(line.replace(0, 9, ""));
+            for (unsigned int i = 0; i < numOfRecs; ++i)
+            {
+                Record rec = table.AddRecord();
+                std::getline(reader, line);
+                std::getline(reader, line);
+                std::getline(reader, line);
 
-            //    std::getline(reader, line);
-            //}
-
-            //// Insert the table into m_Data
-            //m_Data.insert({ table, {} });
-
-            //// Get amount of records
-            //std::getline(reader, line);
-            //unsigned int amntOfRecs = std::stoi(line.replace(0, 8, ""));
-
-            //// Get the lines (RECORD, {, 1stRec)
-            //std::getline(reader, line);
-            //std::getline(reader, line);
-            //std::getline(reader, line);
-
-            //for (unsigned int recNum = 0; recNum < amntOfRecs; ++recNum)
-            //{
-            //    m_Data[table].emplace_back(&Record());
-            //    while (line != "}")
-            //    {
-            //        m_Data[table][recNum]->AddData(line.replace(0, 4, ""));
-            //        std::getline(reader, line);
-            //    }
-            //    std::getline(reader, line);
-            //    std::getline(reader, line);
-            //    std::getline(reader, line);
-            //}
+                while (line != "}")
+                {
+                    unsigned char datatypeIndex = (unsigned char)line.find(":") + 1;
+                    if (line[datatypeIndex] == 'I')
+                    {
+                        rec.AddData(std::stoi(line));
+                    }
+                    else if (line[datatypeIndex] == 'T')
+                    {
+                        rec.AddData(line);
+                    }
+                    std::getline(reader, line);
+                }
+            }
         }
     }
 
@@ -98,8 +77,6 @@ namespace QRD
     void QRDDB::Write()
     {
         std::ofstream writer(m_DBFilePath);
-
-
     }
 
     void QRDDB::ExitQRD()

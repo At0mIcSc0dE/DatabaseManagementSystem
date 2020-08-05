@@ -11,7 +11,7 @@ Application::Application(const std::string& filePath)
 void Application::Run()
 {
 	int age;
-
+	
 	//Create table Table1, alternatively get table Table1
 	QRD::Table& table = m_Database.AddTable("Table1");
 	//QRD::Table table2 = m_Database.GetTable("Table1");

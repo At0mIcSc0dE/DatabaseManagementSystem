@@ -14,8 +14,8 @@ namespace QRD
 		*
 		* @param args is the data to be stored
 		*/
-		template<typename... Args>
-		void AddData(Args... args);
+		template<typename T>
+		void AddData(const T& data);
 
 		/**
 		* Edits the record
@@ -29,8 +29,8 @@ namespace QRD
 
 	};
 
-	template<typename ...Args>
-	inline void Record::AddData(Args ...args)
+	template<typename T>
+	inline void Record::AddData(const T& data)
 	{
 
 	}

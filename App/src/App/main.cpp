@@ -3,6 +3,6 @@
 
 int main()
 {
-	Application app("D:\\dev\\ProgramFiles\\DBMS\\DB.dbs");
+	Application app("C:\\dev\\ProgramFiles\\DBMS\\DB.dbs");
 	app.Run();
 }
