@@ -1,7 +1,5 @@
 /**
-* File which should be included by the user to get all necessary items
+* File which is supposed to be included by the client
 */
 
-#pragma once
-#include "QRDDB.h"
-
+#include "Database.h"

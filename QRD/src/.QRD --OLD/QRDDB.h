@@ -58,7 +58,9 @@ namespace QRD
 		/**********************
 		**       DEBUG       **
 		***********************/
-		//auto& GetData() { return m_Data; }
+		auto& GetData() { return m_Data; }
+
+	private:
 
 	private:
 		std::unordered_map<Table*, std::vector<Record*>> m_Data;

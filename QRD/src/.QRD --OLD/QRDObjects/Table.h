@@ -56,11 +56,6 @@ namespace QRD
 		template<typename... Args>
 		std::tuple<Record>&& GetRecord(const Args&... args);
 
-		/**
-		* Properly deletes the table, leaves you with empty table, column and record objects
-		*/
-		void DeleteTable();
-
 	private:
 		/**
 		* Datastructure for all fields in this table
@@ -77,9 +72,11 @@ namespace QRD
 	template<DBTypes FIELD_DATA_TYPE>
 	inline Field&& Table::AddField(const std::string& fieldName)
 	{
-		Field field(fieldName, (char)FIELD_DATA_TYPE);
-		m_Fields.emplace_back(field);
-		return std::move(field);
+		//Field field(fieldName, (char)FIELD_DATA_TYPE);
+		//m_Fields.emplace_back(field);
+		//return std::move(field);
+		Field* field = new Field(fieldName, (char)FIELD_DATA_TYPE);
+		m_Data.emplace_back()
 	}
 
 	template<DBTypes FIELD_DATA_TYPE>

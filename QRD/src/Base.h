@@ -25,15 +25,18 @@
 #define QRD_TIMER_ACTIVE 1
 
 
+#define QRD_ASSERT(x) if(!(x)) __debugbreak();
+
+
 namespace QRD
 {
 	/**
-	* SQL DBTypes
+	* SQL DbTypes
 	*/
 	typedef const char* TEXT;
 	typedef const int INTEGER;
 
-	enum DBTypes
+	enum DbTypes
 	{
 		NULL_TYPE = 0, TEXT_TYPE, INTEGER_TYPE
 	};

@@ -36,13 +36,20 @@ namespace QRD
             std::getline(reader, line);
             std::getline(reader, line);
 
+            std::vector<DBTypes> typeOrder;
             while (line != "}")
             {
                 unsigned char datatypeIndex = (unsigned char)line.find(":") + 1;
                 if (line[datatypeIndex] == 'I')
+                {
                     table.AddField<INTEGER_TYPE>(line);
+                    typeOrder.emplace_back(INTEGER_TYPE);
+                }
                 else if (line[datatypeIndex] == 'T')
+                {
                     table.AddField<TEXT_TYPE>(line);
+                    typeOrder.emplace_back(TEXT_TYPE);
+                }
 
                 std::getline(reader, line);
             }
@@ -56,17 +63,9 @@ namespace QRD
                 std::getline(reader, line);
                 std::getline(reader, line);
 
-                while (line != "}")
+                for (DBTypes type : typeOrder)
                 {
-                    unsigned char datatypeIndex = (unsigned char)line.find(":") + 1;
-                    if (line[datatypeIndex] == 'I')
-                    {
-                        rec.AddData(std::stoi(line));
-                    }
-                    else if (line[datatypeIndex] == 'T')
-                    {
-                        rec.AddData(line);
-                    }
+                    rec.AddData(line, type);
                     std::getline(reader, line);
                 }
             }
