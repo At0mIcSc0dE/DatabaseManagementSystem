@@ -4,9 +4,18 @@
 
 namespace QRD
 {
-    Table::Table(const std::string& tableName, std::vector<DbData*>& data)
-        : m_TableName(tableName), m_Data(data), m_IndexInData(-1)
+    Table::Table(const std::string& tableName, const int id)
+        : m_TableName(tableName), m_Records{}, m_Fields{}, m_Id(id)
     {
+    }
+
+    Field& Table::GetField(const std::string_view fieldName)
+    {
+        for (auto& field : m_Fields)
+        {
+            if (field.GetFieldName() == fieldName)
+                return field;
+        }
     }
 
     void Table::DeleteField(const Field& field)
@@ -19,15 +28,9 @@ namespace QRD
 
     }
 
-    std::tuple<Record> Table::GetRecordsByValues(const std::string& commandStr)
-    {
-        return std::tuple<Record>();
-    }
-
     Record& Table::GetRecordById(const int id)
     {
-        Record rec;
-        return rec;
+        return m_Records[id];
     }
 
     void Table::DeleteRecord(const Record& record)
@@ -38,6 +41,13 @@ namespace QRD
     void Table::DeleteRecord(const std::string& commandStr)
     {
 
+    }
+
+    bool Table::operator==(const Table& other) const
+    {
+        if(m_Id == other.m_Id)
+            return true;
+        return false;
     }
 
 }

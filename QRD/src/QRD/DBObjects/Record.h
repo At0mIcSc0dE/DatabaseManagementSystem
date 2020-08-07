@@ -10,9 +10,12 @@ namespace QRD
 	{
 	public:
 
-		template<typename T>
-
+		template<typename T/*, class Enable = std::enable_if_t<std::is_convertible_v<T, std::string>>*/>
 		void AddData(const T& data);
+
+		const std::vector<std::string>& GetData() const { return m_Data; }
+
+		bool operator==(const Record& other) const;
 
 	private:
 		std::vector<std::string> m_Data;
@@ -22,10 +25,9 @@ namespace QRD
 	template<typename T>
 	inline void Record::AddData(const T& data)
 	{
-		if (!std::is_convertible<T, std::string>)
-			__debugbreak();
-
-		m_Data.emplace_back(data);
+		std::stringstream ss;
+		ss << data;
+		m_Data.emplace_back(ss.str());
 	}
 }
 

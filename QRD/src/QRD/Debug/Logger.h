@@ -37,15 +37,15 @@ namespace QRD
 
 
 #if QRD_LOG_ACTIVE
-	//#define QRD_LOG(text, type) Calculator::Logger::Log<type>(text, "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
-	template<typename T>	
+	template<typename T>
 	inline void QRD_LOG(const T& text)
 	{
 		QRD::Logger::Log((*(T*)&text), "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt");
 	}
-	#define QRD_CLEAR() Calculator::Logger::Init("D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
+	#define QRD_LOG_CLEAR() QRD::Logger::Init("D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
 #else
+	template<typename T>
 	inline void QRD_LOG(const T& text) {}
 	//#define QRD_LOG(text)
-	#define QRD_CLEAR()
+	#define QRD_LOG_CLEAR()
 #endif

@@ -75,17 +75,18 @@ namespace QRD
 		/************************************************************************************
 		*****************           DEBUG FUNCTIONS AND VARIABLES           *****************
 		************************************************************************************/
-		auto& GetData() const { return m_Data; }
+		auto& GetData() const { return m_Tables; }
 
 	private:
-		
+		void ReadFields(std::ifstream& reader, std::string& line);
+		void ReadRecords(std::ifstream& reader, std::string& line);
 
 	private:
 		
 		/**
 		* Datastructure holding all tables and their corresponding records
 		*/
-		std::vector<DbData*> m_Data;
+		std::vector<Table> m_Tables;
 		
 		/**
 		* File path to the .dbs file

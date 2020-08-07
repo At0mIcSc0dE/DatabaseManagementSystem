@@ -1,6 +1,10 @@
 #include "Application.h"
 #include <iostream>
 
+#include <Windows.h>
+
+extern size_t totalAllocs;
+
 
 Application::Application(const std::string& filePath)
 	: m_Running(true), m_Database(filePath)
@@ -10,7 +14,6 @@ Application::Application(const std::string& filePath)
 
 void Application::Run()
 {
-	int age;
 	
 	//Create table Table1, alternatively get table Table1
 	//QRD::Table& table = m_Database.AddTable("Table1");
@@ -24,7 +27,7 @@ void Application::Run()
 	**NEW**
 	******/
 
-	QRD::Table table = m_Database.CreateTable("Table1");
+	QRD::Table table = m_Database.GetTable("table1");
 	//QRD::Table table2 = m_Database.GetTable("fds");
 
 	//table.AddField<QRD::INTEGER_TYPE>("field1");
@@ -32,13 +35,14 @@ void Application::Run()
 	//table.GetRecordsByValues("field1:32,field2:Si");
 	while (m_Running)
 	{
-		std::cout << "Enter your age: \n";
-		//std::cin >> age;
-		age = 15;
-		
-		table.AddRecord("Hello", 3, "32");
-
-		auto& data = m_Database.GetData();
+		auto recs = table.GetRecordsByValues("f1:120", "f2:Simon"); //WORKING
+		//auto recs = table.GetRecordsByValues("f1:120");
+		//auto recs = table.GetRecords();
+		//for (auto rec : recs)
+		//{
+		//	if (rec.GetData()[0] == "120" && rec.GetData()[2] == "30")
+		//		std::cout << "Record found\n";
+		//}
 
 		// Add the age to the table
 		//QRD::Record rec = table.AddRecord(age);
@@ -52,11 +56,11 @@ void Application::Run()
 		//QRD::Column colI = table.InsertColumn<QRD::TEXT>("COLANE", 2);
 		//m_Database.Write();
 
-
 		/******
 		**NEW**
 		******/
-		m_Database.WriteDb();
+		m_Database.WriteDb();		
+		QRD_LOG(totalAllocs);
 
 	}
 

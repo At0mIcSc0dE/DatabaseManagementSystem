@@ -4,7 +4,8 @@
 
 namespace QRD
 {
-    Field::Field(const std::string& fieldName, const DbTypes& dbType)
+    Field::Field(const std::string& fieldName, const DbTypes& dbType, const unsigned short fieldId)
+        : m_FieldName(fieldName), m_FieldType(dbType), m_Data{}, m_Id(fieldId)
     {
     }
 }
