@@ -24,7 +24,14 @@ namespace QRD
 	class QRD_API Database
 	{
 	public:
-		Database(const std::string& filePath);
+
+		/**
+		* Constructor for Database object
+		*
+		* @param filePath is the path to the .dbs file
+		* @param tableAmnt is the total amount of tables the program will allocate memory for
+		*/
+		Database(const std::string& filePath, unsigned short tableAmnt = 10);
 
 		/**
 		* Creates a new table, adds it to m_Data
@@ -71,11 +78,17 @@ namespace QRD
 		*/
 		void ExitDb();
 
+		/**
+		* Function should be called before creating any tables to allocate more memory for the vector of tables
+		*
+		* @param tableAmnt is the amount of tables the client is going to create
+		*/
+		void ReserveTables(unsigned int tableAmnt);
 
 		/************************************************************************************
 		*****************           DEBUG FUNCTIONS AND VARIABLES           *****************
 		************************************************************************************/
-		auto& GetData() const { return m_Tables; }
+		std::vector<Table>& GetTables() { return m_Tables; }
 
 	private:
 		void ReadFields(std::ifstream& reader, std::string& line);
@@ -91,7 +104,7 @@ namespace QRD
 		/**
 		* File path to the .dbs file
 		*/
-		const std::string& m_DBFilePath;
+		const std::string m_DBFilePath;
 	};
 }
 

@@ -4,9 +4,10 @@
 
 namespace QRD
 {
-	Database::Database(const std::string& filePath)
+	Database::Database(const std::string& filePath, unsigned short tableAmnt)
 		: m_DBFilePath(filePath), m_Tables{}
 	{
+		m_Tables.reserve(tableAmnt);
 		ReadDb();
 	}
 
@@ -52,6 +53,9 @@ namespace QRD
 
 		std::string line;
 		std::getline(reader, line);
+		if (line == "")
+			return;
+
 		unsigned short tableNr = std::stoi(line.replace(0, 8, ""));
 		
 		std::getline(reader, line);
@@ -63,12 +67,41 @@ namespace QRD
 			ReadFields(reader, line);
 			ReadRecords(reader, line);
 		}
-
 	}
 
 	void Database::WriteDb()
 	{
+		std::ofstream writer(m_DBFilePath);
+		writer << "TABLES: " << m_Tables.size() << '\n';
 
+		for (auto& table : m_Tables)
+		{
+			writer << "TABLE: " << table.GetTableName() << "\nFIELDS\n{\n";
+			for (const auto& field : table.GetFields())
+			{
+				switch (field.GetFieldType())
+				{
+				case INTEGER_TYPE:
+					writer << "    " << field.GetFieldName() << ":INTEGER\n";
+					break;
+				case TEXT_TYPE:
+					writer << "    " << field.GetFieldName() << ":TEXT\n";
+					break;
+				}
+			}
+			
+			writer << "}\nRECORDS: " << table.GetRecords().size() << '\n';
+			for (const auto& record : table.GetRecords())
+			{
+				writer << "RECORD\n{\n";
+				for (unsigned short j = 0; j < record.GetRecordData().size(); ++j)
+				{
+					writer << "    " << record.GetRecordData()[j] << '\n';
+				}
+				writer << "}\n";
+			}
+		}
+		writer.close();
 	}
 
 	void Database::ExitDb()
@@ -100,9 +133,15 @@ namespace QRD
 	void Database::ReadRecords(std::ifstream& reader, std::string& line)
 	{
 		Table& table = m_Tables[m_Tables.size() - 1];
-		
+
 		std::getline(reader, line);
 		unsigned short recordNr = std::stoi(line.replace(0, 9, ""));
+
+		if (recordNr == 0)
+		{
+			std::getline(reader, line);
+			return;
+		}
 
 		std::getline(reader, line);
 		std::getline(reader, line);
@@ -117,9 +156,17 @@ namespace QRD
 				std::getline(reader, line);
 			}
 			std::getline(reader, line);
-			std::getline(reader, line);
-			std::getline(reader, line);
+			if (i < recordNr - 1)
+			{
+				std::getline(reader, line);
+				std::getline(reader, line);
+			}
 		}
+	}
+
+	void Database::ReserveTables(unsigned int tableAmnt)
+	{
+		m_Tables.reserve(tableAmnt);
 	}
 
 }

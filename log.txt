@@ -1,0 +1,2 @@
+[12:30:30]: 328
+[12:30:30]: Timer in file ystem\App\src\App\Application.cpp, function Application::Run, line 17 took 47258us

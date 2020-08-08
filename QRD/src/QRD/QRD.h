@@ -3,4 +3,3 @@
 */
 
 #include "Database.h"
-#include "Debug/Logger.h"
