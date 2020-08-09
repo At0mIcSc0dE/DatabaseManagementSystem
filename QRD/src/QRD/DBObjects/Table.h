@@ -5,8 +5,6 @@
 #include "Field.h"
 #include "Record.h"
 
-#include "QRD/Debug/Timer.h"
-
 
 namespace QRD
 {
@@ -199,7 +197,6 @@ namespace QRD
 	template<typename... Args>
 	inline std::vector<Record> Table::GetRecordsByValues(const Args&... commandStrs)
 	{
-		TIMER;
 		std::vector<Record> recs = m_Records;
 		std::vector<std::string_view> commands{ commandStrs... };
 

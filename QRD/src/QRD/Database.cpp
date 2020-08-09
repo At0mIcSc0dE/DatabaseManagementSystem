@@ -7,6 +7,15 @@ namespace QRD
 	Database::Database(const std::string& filePath, unsigned short tableAmnt)
 		: m_DBFilePath(filePath), m_Tables{}
 	{
+		auto FileExists = [](const std::string& filePath)
+		{
+			struct stat buffer;
+			return (stat(filePath.c_str(), &buffer) == 0);
+		};
+
+		if (!FileExists(filePath))
+			throw std::invalid_argument("Path to file not found!");
+
 		m_Tables.reserve(tableAmnt);
 		ReadDb();
 	}
@@ -49,6 +58,7 @@ namespace QRD
 
 	void Database::ReadDb()
 	{
+		QRD_ASSERT(m_DBFilePath == "");
 		std::ifstream reader(m_DBFilePath);
 
 		std::string line;
@@ -57,7 +67,7 @@ namespace QRD
 			return;
 
 		unsigned short tableNr = std::stoi(line.replace(0, 8, ""));
-		
+
 		std::getline(reader, line);
 
 		for (unsigned short i = 0; i < tableNr; ++i)
@@ -71,6 +81,7 @@ namespace QRD
 
 	void Database::WriteDb()
 	{
+		QRD_ASSERT(m_DBFilePath == "");
 		std::ofstream writer(m_DBFilePath);
 		writer << "TABLES: " << m_Tables.size() << '\n';
 
@@ -120,6 +131,9 @@ namespace QRD
 		while (line != "}")
 		{
 			unsigned char typeIdx = (unsigned char)line.find(':') + 1;
+
+			if (!typeIdx)
+				throw std::invalid_argument("Invalid index for type specifier!");
 
 			if (line[typeIdx] == 'I')
 				table.AddField<NUMBER>(line.replace(line.size() - 8, line.size() - 1, "").replace(0, 4, ""));

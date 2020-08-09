@@ -47,6 +47,9 @@ namespace QRD
 
     Record& Table::GetRecordById(const int id)
     {
+        if (id > m_Records.size())
+            throw std::invalid_argument("Vector subscription out of range");
+
         return m_Records[id];
     }
 

@@ -24,9 +24,11 @@
 #define QRD_LOG_ACTIVE 1
 #define QRD_TIMER_ACTIVE 1
 
-
-#define QRD_ASSERT(x) if(!(x)) __debugbreak();
-
+#ifdef _DEBUG
+	#define QRD_ASSERT(x) if(!(x)) __debugbreak();
+#else
+	#define QRD_ASSERT(x)
+#endif
 
 namespace QRD
 {

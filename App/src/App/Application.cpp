@@ -14,7 +14,6 @@ Application::Application(const std::string& filePath)
 
 void Application::Run()
 {
-	TIMER;
 	QRD::Table& OneTimeExp = m_Database.GetTable("OneTimeExpenses");
 	QRD::Table& MonthlyExp = m_Database.GetTable("MonthlyExpenses");
 	QRD::Table& OneTimeTak = m_Database.GetTable("OneTimeTakings");
