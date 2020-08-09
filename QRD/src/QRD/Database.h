@@ -11,15 +11,6 @@
 namespace QRD
 {
 
-	/**
-	* Struct holding all tables and their corresponding records
-	*/
-	struct DbData
-	{
-		Table table;
-		std::vector<Record> records;
-	};
-
 
 	class QRD_API Database
 	{

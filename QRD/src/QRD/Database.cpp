@@ -81,10 +81,10 @@ namespace QRD
 			{
 				switch (field.GetFieldType())
 				{
-				case INTEGER_TYPE:
+				case NUMBER:
 					writer << "    " << field.GetFieldName() << ":INTEGER\n";
 					break;
-				case TEXT_TYPE:
+				case TEXT:
 					writer << "    " << field.GetFieldName() << ":TEXT\n";
 					break;
 				}
@@ -122,9 +122,9 @@ namespace QRD
 			unsigned char typeIdx = (unsigned char)line.find(':') + 1;
 
 			if (line[typeIdx] == 'I')
-				table.AddField<INTEGER_TYPE>(line.replace(line.size() - 8, line.size() - 1, "").replace(0, 4, ""));
+				table.AddField<NUMBER>(line.replace(line.size() - 8, line.size() - 1, "").replace(0, 4, ""));
 			else if (line[typeIdx] == 'T')
-				table.AddField<TEXT_TYPE>(line.replace(line.size() - 5, line.size() - 1, "").replace(0, 4, ""));
+				table.AddField<TEXT>(line.replace(line.size() - 5, line.size() - 1, "").replace(0, 4, ""));
 
 			std::getline(reader, line);
 		}

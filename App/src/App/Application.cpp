@@ -20,8 +20,7 @@ void Application::Run()
 	QRD::Table& OneTimeTak = m_Database.GetTable("OneTimeTakings");
 	QRD::Table& MonthlyTak = m_Database.GetTable("MonthlyTakings");
 	
-	QRD::Record& rec = OneTimeExp.GetRecordById(0);
-	OneTimeExp.EditRecord(rec, "Christa2", 12, "No Info", 8, 8, 2020, "General", "Mom");
+	OneTimeExp.AddRecord("Christa", 32, "", 3, 3, 3333, "c", "c");
 
 	m_Database.ExitDb();
 	QRD_LOG(totalAllocs);

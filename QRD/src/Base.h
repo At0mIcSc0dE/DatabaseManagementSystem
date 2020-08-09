@@ -1,6 +1,6 @@
 #pragma once
 
-#define QRD_DYNAMIC_LIBRARY 1
+#define QRD_DYNAMIC_LIBRARY 0
 
 #if QRD_DYNAMIC_LIBRARY
 	#ifdef DBMS_BUILD
@@ -33,12 +33,9 @@ namespace QRD
 	/**
 	* SQL DbTypes
 	*/
-	typedef const char* TEXT;
-	typedef const int INTEGER;
-
 	enum DbTypes
 	{
-		NULL_TYPE = 0, TEXT_TYPE, INTEGER_TYPE
+		NONE = 0, TEXT, NUMBER
 	};
 
 }
