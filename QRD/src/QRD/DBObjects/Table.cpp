@@ -45,7 +45,7 @@ namespace QRD
         UpdateFieldIds(fieldId);
     }
 
-    Record& Table::GetRecordById(const int id)
+    Record& Table::GetRecordById(const unsigned int id)
     {
         if (id > m_Records.size())
             throw std::invalid_argument("Vector subscription out of range");

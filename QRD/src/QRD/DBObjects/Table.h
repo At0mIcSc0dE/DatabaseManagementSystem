@@ -83,7 +83,7 @@ namespace QRD
 		* @param is is the id in m_Records
 		* @rreturns the record in m_Records with id
 		*/
-		Record& GetRecordById(const int id);
+		Record& GetRecordById(const unsigned int id);
 
 		/**
 		* Getter for all records

@@ -58,7 +58,7 @@ namespace QRD
 
 	void Database::ReadDb()
 	{
-		QRD_ASSERT(m_DBFilePath == "");
+		QRD_ASSERT(m_DBFilePath != "");
 		std::ifstream reader(m_DBFilePath);
 
 		std::string line;
@@ -81,7 +81,7 @@ namespace QRD
 
 	void Database::WriteDb()
 	{
-		QRD_ASSERT(m_DBFilePath == "");
+		QRD_ASSERT(m_DBFilePath != "");
 		std::ofstream writer(m_DBFilePath);
 		writer << "TABLES: " << m_Tables.size() << '\n';
 
