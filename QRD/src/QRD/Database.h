@@ -10,8 +10,9 @@
 
 namespace QRD
 {
-
-
+	/**
+	* Main Database class, should be instantiated by the client to manage your database
+	*/
 	class QRD_API Database
 	{
 	public:
@@ -65,7 +66,7 @@ namespace QRD
 		void WriteDb();
 
 		/**
-		* Writes everything stored in memory to file and destroys all database object in memory
+		* Writes everything stored in memory to file and destroys all database objects in memory
 		*/
 		void ExitDb();
 
@@ -76,9 +77,11 @@ namespace QRD
 		*/
 		void ReserveTables(unsigned int tableAmnt);
 
-		/************************************************************************************
-		*****************           DEBUG FUNCTIONS AND VARIABLES           *****************
-		************************************************************************************/
+		/**
+		* Getter for all tables in .dbs file
+		*
+		* @returns all tables
+		*/
 		std::vector<Table>& GetTables() { return m_Tables; }
 
 	private:

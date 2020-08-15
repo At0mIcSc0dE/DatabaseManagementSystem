@@ -1,0 +1,137 @@
+\hypertarget{class_q_r_d_1_1_record}{}\doxysection{Q\+RD\+::Record Class Reference}
+\label{class_q_r_d_1_1_record}\index{QRD::Record@{QRD::Record}}
+
+
+{\ttfamily \#include $<$Record.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_r_d_1_1_record_a8522bc7528900f8edeaea72dd3ce43a4}{Record}} ()=default
+\item 
+\mbox{\hyperlink{class_q_r_d_1_1_record_a7fb90e9c1e12de2f7757ae6d23155032}{Record}} (unsigned int id)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_q_r_d_1_1_record_a3022afed3eb28c7d9c5e9fc81767081d}{Add\+Data}} (const T \&data)
+\item 
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{class_q_r_d_1_1_record_a597325963a0265b17ba092892f638087}{Get\+Record\+Data}} () const
+\item 
+bool \mbox{\hyperlink{class_q_r_d_1_1_record_a6e89bfb409fac43d764a9ac4cbe0c00a}{operator==}} (const \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \&other) const
+\item 
+unsigned int \mbox{\hyperlink{class_q_r_d_1_1_record_ab93ce8b5b0051fbc6ac17ec3288ee882}{Get\+Record\+Id}} () const
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_record_adc2b44236c276348d1948b281bb87366}{Set\+Record\+Id}} (unsigned int index)
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_record_ad6a3f6438abef621bff3f1a66407dee1}{Delete\+Data}} (unsigned short field\+Id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class which holds the data of one record in a table 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_a8522bc7528900f8edeaea72dd3ce43a4}\label{class_q_r_d_1_1_record_a8522bc7528900f8edeaea72dd3ce43a4}} 
+\index{QRD::Record@{QRD::Record}!Record@{Record}}
+\index{Record@{Record}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{Record()}{Record()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+R\+D\+::\+Record\+::\+Record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default constructor for \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \mbox{\Hypertarget{class_q_r_d_1_1_record_a7fb90e9c1e12de2f7757ae6d23155032}\label{class_q_r_d_1_1_record_a7fb90e9c1e12de2f7757ae6d23155032}} 
+\index{QRD::Record@{QRD::Record}!Record@{Record}}
+\index{Record@{Record}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{Record()}{Record()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+R\+D\+::\+Record\+::\+Record (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & is the id of the new record \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_a3022afed3eb28c7d9c5e9fc81767081d}\label{class_q_r_d_1_1_record_a3022afed3eb28c7d9c5e9fc81767081d}} 
+\index{QRD::Record@{QRD::Record}!AddData@{AddData}}
+\index{AddData@{AddData}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{AddData()}{AddData()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Q\+R\+D\+::\+Record\+::\+Add\+Data (\begin{DoxyParamCaption}\item[{const T \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Adds data to existing record
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & is the data to add to the record \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_ad6a3f6438abef621bff3f1a66407dee1}\label{class_q_r_d_1_1_record_ad6a3f6438abef621bff3f1a66407dee1}} 
+\index{QRD::Record@{QRD::Record}!DeleteData@{DeleteData}}
+\index{DeleteData@{DeleteData}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{DeleteData()}{DeleteData()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Record\+::\+Delete\+Data (\begin{DoxyParamCaption}\item[{unsigned short}]{field\+Id }\end{DoxyParamCaption})}
+
+Deletes the data at field\+Id
+
+
+\begin{DoxyParams}{Parameters}
+{\em field\+Id} & is the id of the field where the data is stored \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_a597325963a0265b17ba092892f638087}\label{class_q_r_d_1_1_record_a597325963a0265b17ba092892f638087}} 
+\index{QRD::Record@{QRD::Record}!GetRecordData@{GetRecordData}}
+\index{GetRecordData@{GetRecordData}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{GetRecordData()}{GetRecordData()}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::string$>$\& Q\+R\+D\+::\+Record\+::\+Get\+Record\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for record data
+
+\begin{DoxyReturn}{Returns}
+all the data in this record 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_ab93ce8b5b0051fbc6ac17ec3288ee882}\label{class_q_r_d_1_1_record_ab93ce8b5b0051fbc6ac17ec3288ee882}} 
+\index{QRD::Record@{QRD::Record}!GetRecordId@{GetRecordId}}
+\index{GetRecordId@{GetRecordId}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{GetRecordId()}{GetRecordId()}}
+{\footnotesize\ttfamily unsigned int Q\+R\+D\+::\+Record\+::\+Get\+Record\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for record id
+
+\begin{DoxyReturn}{Returns}
+the record\textquotesingle{}s id 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_a6e89bfb409fac43d764a9ac4cbe0c00a}\label{class_q_r_d_1_1_record_a6e89bfb409fac43d764a9ac4cbe0c00a}} 
+\index{QRD::Record@{QRD::Record}!operator==@{operator==}}
+\index{operator==@{operator==}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Q\+R\+D\+::\+Record\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \&}]{other }\end{DoxyParamCaption}) const}
+
+Compares m\+\_\+\+Data
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & is the other \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if m\+\_\+\+Data = other.\+m\+\_\+\+Data, else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_record_adc2b44236c276348d1948b281bb87366}\label{class_q_r_d_1_1_record_adc2b44236c276348d1948b281bb87366}} 
+\index{QRD::Record@{QRD::Record}!SetRecordId@{SetRecordId}}
+\index{SetRecordId@{SetRecordId}!QRD::Record@{QRD::Record}}
+\doxysubsubsection{\texorpdfstring{SetRecordId()}{SetRecordId()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Record\+::\+Set\+Record\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for record id, automatically called when deleting a record
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & is the new record id \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Q\+R\+D/src/\+Q\+R\+D/\+D\+B\+Objects/Record.\+h\item 
+Q\+R\+D/src/\+Q\+R\+D/\+D\+B\+Objects/Record.\+cpp\end{DoxyCompactItemize}

@@ -8,7 +8,9 @@
 
 namespace QRD
 {
-
+	/**
+	* Stores all records and fields in the table and is used for adding/editing/deleting records or fields
+	*/
 	class QRD_API Table
 	{
 	public:
@@ -16,6 +18,7 @@ namespace QRD
 		* Constructor for Table object
 		*
 		* @param tableName is the name under which the table will be stored
+		* @param id is the index of the table in Database::m_Tables
 		*/
 		Table(const std::string& tableName, const int id);
 
@@ -28,7 +31,7 @@ namespace QRD
 		*/
 		template<DbTypes FIELD_DATA_TYPE>
 		Field& AddField(const std::string& fieldName);
-		
+
 		/**
 		* Finds the field with specified name
 		*
@@ -80,8 +83,8 @@ namespace QRD
 		/**
 		* Returns the record by id
 		*
-		* @param is is the id in m_Records
-		* @rreturns the record in m_Records with id
+		* @param id is the id in m_Records
+		* @returns the record in m_Records with id
 		*/
 		Record& GetRecordById(const unsigned int id);
 
@@ -137,7 +140,7 @@ namespace QRD
 		* @returns the table's id
 		*/
 		unsigned short GetTableId() const { return m_Id; }
-		
+
 		/**
 		* Updates record id's after deleting a record
 		*
@@ -151,8 +154,6 @@ namespace QRD
 		* @param indexOfDeletedElement is the index where the element was before it's deletion
 		*/
 		void UpdateFieldIds(unsigned short indexOfDeletedElement);
-
-	private:
 
 	private:
 		/**

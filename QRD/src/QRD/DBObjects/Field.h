@@ -6,11 +6,14 @@
 
 namespace QRD
 {
+	/**
+	* Field class which stores the name and type of the field
+	*/
 	class QRD_API Field
 	{
 	public:
 		/**
-		* Default constructor for field object
+		* Field class which stores the name and type of the field
 		*/
 		Field() = default;
 
@@ -19,7 +22,7 @@ namespace QRD
 		*
 		* @param fieldName is the name of the field
 		* @param dbType is the type of data the field will store
-		* @parma fieldId is the id of the field;
+		* @param fieldId is the id of the field;
 		*/
 		Field(const std::string& fieldName, const DbTypes& dbType, const unsigned short fieldId);
 

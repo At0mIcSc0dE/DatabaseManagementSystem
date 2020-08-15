@@ -6,6 +6,9 @@
 
 namespace QRD
 {
+	/**
+	* Class which holds the data of one record in a table
+	*/
 	class QRD_API Record
 	{
 	public:
