@@ -56,6 +56,14 @@ namespace QRD
 		}
 	}
 
+	void Database::UpdateTableIds(unsigned short indexOfDeletedElement)
+	{
+		for (unsigned int i = indexOfDeletedElement; i < m_Tables.size(); ++i)
+		{
+			m_Tables[i].SetTableId(i);
+		}
+	}
+
 	void Database::ReadDb()
 	{
 		QRD_ASSERT(m_DBFilePath != "");

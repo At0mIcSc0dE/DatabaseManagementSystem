@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Base.h"
 #include "pch.h"
+#include "Base.h"
 
 
 namespace QRD
@@ -38,7 +38,7 @@ namespace QRD
 		*
 		* @returns the field's id
 		*/
-		unsigned short GetFieldId() const { return m_Id; }
+		unsigned short GetFieldId() const { return m_FieldId; }
 
 		/**
 		* Getter for field type
@@ -52,8 +52,16 @@ namespace QRD
 		*
 		* @param index is the new field id
 		*/
-		void SetFieldId(unsigned short index) { m_Id = index; }
+		void SetFieldId(unsigned short index) { m_FieldId = index; }
 	
+		/**
+		* Comparison operator, compares all data in field
+		* 
+		* @param other is the other Field object to compare to
+		* @returns true if both field objects hold the same data, else false
+		*/
+		bool operator==(const Field& other);
+
 	private:
 		/**
 		* The field's name
@@ -68,7 +76,7 @@ namespace QRD
 		/**
 		* Represents id in Table::m_Fields
 		*/
-		unsigned short m_Id;
+		unsigned short m_FieldId;
 	};
 
 }

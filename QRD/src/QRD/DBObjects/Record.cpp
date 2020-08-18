@@ -6,7 +6,7 @@ namespace QRD
 {
     bool Record::operator==(const Record& other) const
     {
-        return m_Data == other.GetRecordData();
+        return m_Data == other.GetRecordData() && m_RecordId == other.GetRecordId();
     }
 
     void Record::DeleteData(unsigned short fieldId)

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Base.h"
 #include "pch.h"
+#include "Base.h"
 #include "Field.h"
 #include "Record.h"
 
@@ -120,10 +120,10 @@ namespace QRD
 		void DeleteRecord(const Args&... commandStrs);
 
 		/**
-		* Compares record ids
+		* Compares tables
 		*
 		* @param other is the other table object
-		* @returns true if the ids match else false
+		* @returns true if the tables hold the same data else false
 		*/
 		bool operator==(const Table& other) const;
 
@@ -139,7 +139,14 @@ namespace QRD
 		*
 		* @returns the table's id
 		*/
-		unsigned short GetTableId() const { return m_Id; }
+		unsigned short GetTableId() const { return m_TableId; }
+
+		/**
+		* Setter for table id, automatically called when deleting a table
+		*
+		* @param index is the new table id
+		*/
+		void SetTableId(unsigned int index) { m_TableId = index; }
 
 		/**
 		* Updates record id's after deleting a record
@@ -174,7 +181,7 @@ namespace QRD
 		/**
 		* Represents the index of the table
 		*/
-		unsigned short m_Id;
+		unsigned short m_TableId;
 	};
 
 

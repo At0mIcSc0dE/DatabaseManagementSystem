@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Base.h"
 #include "pch.h"
+#include "Base.h"
 
 
 namespace QRD
@@ -20,9 +20,9 @@ namespace QRD
 		/**
 		* Constructor for Record
 		*
-		* @param id is the id of the new record
+		* @param recordId is the id of the new record
 		*/
-		Record(unsigned int id) : m_Id(id) {}
+		Record(unsigned int recordId) : m_RecordId(recordId) {}
 
 		/**
 		* Adds data to existing record
@@ -40,10 +40,10 @@ namespace QRD
 		const std::vector<std::string>& GetRecordData() const { return m_Data; }
 
 		/**
-		* Compares m_Data
+		* Compares records
 		*
 		* @param other is the other Record
-		* @returns true if m_Data = other.m_Data, else false
+		* @returns true if the records hold the same data else false
 		*/
 		bool operator==(const Record& other) const;
 
@@ -52,14 +52,14 @@ namespace QRD
 		*
 		* @returns the record's id
 		*/
-		unsigned int GetRecordId() const { return m_Id; }
+		unsigned int GetRecordId() const { return m_RecordId; }
 
 		/**
 		* Setter for record id, automatically called when deleting a record
 		*
 		* @param index is the new record id
 		*/
-		void SetRecordId(unsigned int index) { m_Id = index; }
+		void SetRecordId(unsigned int index) { m_RecordId = index; }
 
 		/**
 		* Deletes the data at fieldId
@@ -77,7 +77,7 @@ namespace QRD
 		/**
 		* Represents id in Table::m_Records
 		*/
-		unsigned int m_Id;
+		unsigned int m_RecordId;
 	};
 
 

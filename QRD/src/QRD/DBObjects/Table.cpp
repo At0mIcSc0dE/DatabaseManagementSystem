@@ -5,7 +5,7 @@
 namespace QRD
 {
     Table::Table(const std::string& tableName, const int id)
-        : m_TableName(tableName), m_Records{}, m_Fields{}, m_Id(id)
+        : m_TableName(tableName), m_Records{}, m_Fields{}, m_TableId(id)
     {
     }
 
@@ -62,7 +62,7 @@ namespace QRD
 
     bool Table::operator==(const Table& other) const
     {
-        if(m_Id == other.m_Id)
+        if(m_TableId == other.m_TableId)
             return true;
         return false;
     }

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Base.h"
 #include "pch.h"
+#include "Base.h"
 
 #include "DBObjects/Table.h"
 #include "DBObjects/Record.h"
@@ -56,6 +56,13 @@ namespace QRD
 		void DeleteTable(const std::string& tableName);
 
 		/**
+		* Updates table id's after deleting a table
+		*
+		* @param indexOfDeletedElement is the index where the element was before it's deletion
+		*/
+		void UpdateTableIds(unsigned short indexOfDeletedElement);
+
+		/**
 		* Reads database stored in file into memory
 		*/
 		void ReadDb();
@@ -76,6 +83,14 @@ namespace QRD
 		* @param tableAmnt is the amount of tables the client is going to create
 		*/
 		void ReserveTables(unsigned int tableAmnt);
+
+		/**
+		* Compares tables
+		*
+		* @param other is the other table object
+		* @returns true if the tables hold the same data else false
+		*/
+		bool operator==(const Database& other);
 
 		/**
 		* Getter for all tables in .dbs file
