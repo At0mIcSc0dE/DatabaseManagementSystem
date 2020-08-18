@@ -18,6 +18,8 @@ unsigned short \mbox{\hyperlink{class_q_r_d_1_1_field_a15f7a769762a8b20165404c82
 const Db\+Types \mbox{\hyperlink{class_q_r_d_1_1_field_a814f5775b88427ac7551f85a89c6120a}{Get\+Field\+Type}} () const
 \item 
 void \mbox{\hyperlink{class_q_r_d_1_1_field_ab1e44483d77061ebd6e52f464cab6a77}{Set\+Field\+Id}} (unsigned short index)
+\item 
+bool \mbox{\hyperlink{class_q_r_d_1_1_field_ac20d0d0b40365a2ac56df514f6451f39}{operator==}} (const \mbox{\hyperlink{class_q_r_d_1_1_field}{Field}} \&other)
 \end{DoxyCompactItemize}
 
 
@@ -83,6 +85,22 @@ Getter for field type
 
 \begin{DoxyReturn}{Returns}
 the field\textquotesingle{}s type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_field_ac20d0d0b40365a2ac56df514f6451f39}\label{class_q_r_d_1_1_field_ac20d0d0b40365a2ac56df514f6451f39}} 
+\index{QRD::Field@{QRD::Field}!operator==@{operator==}}
+\index{operator==@{operator==}!QRD::Field@{QRD::Field}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Q\+R\+D\+::\+Field\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_q_r_d_1_1_field}{Field}} \&}]{other }\end{DoxyParamCaption})}
+
+Comparison operator, compares all data in field
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & is the other \mbox{\hyperlink{class_q_r_d_1_1_field}{Field}} object to compare to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if both field objects hold the same data, else false 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_q_r_d_1_1_field_ab1e44483d77061ebd6e52f464cab6a77}\label{class_q_r_d_1_1_field_ab1e44483d77061ebd6e52f464cab6a77}} 
 \index{QRD::Field@{QRD::Field}!SetFieldId@{SetFieldId}}

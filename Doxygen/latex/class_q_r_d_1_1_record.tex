@@ -9,7 +9,7 @@
 \item 
 \mbox{\hyperlink{class_q_r_d_1_1_record_a8522bc7528900f8edeaea72dd3ce43a4}{Record}} ()=default
 \item 
-\mbox{\hyperlink{class_q_r_d_1_1_record_a7fb90e9c1e12de2f7757ae6d23155032}{Record}} (unsigned int id)
+\mbox{\hyperlink{class_q_r_d_1_1_record_a36584bc161e525ea648c2fdc638b52a9}{Record}} (unsigned int record\+Id)
 \item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_q_r_d_1_1_record_a3022afed3eb28c7d9c5e9fc81767081d}{Add\+Data}} (const T \&data)
 \item 
@@ -35,17 +35,17 @@ Class which holds the data of one record in a table
 \doxysubsubsection{\texorpdfstring{Record()}{Record()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Q\+R\+D\+::\+Record\+::\+Record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
-Default constructor for \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \mbox{\Hypertarget{class_q_r_d_1_1_record_a7fb90e9c1e12de2f7757ae6d23155032}\label{class_q_r_d_1_1_record_a7fb90e9c1e12de2f7757ae6d23155032}} 
+Default constructor for \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \mbox{\Hypertarget{class_q_r_d_1_1_record_a36584bc161e525ea648c2fdc638b52a9}\label{class_q_r_d_1_1_record_a36584bc161e525ea648c2fdc638b52a9}} 
 \index{QRD::Record@{QRD::Record}!Record@{Record}}
 \index{Record@{Record}!QRD::Record@{QRD::Record}}
 \doxysubsubsection{\texorpdfstring{Record()}{Record()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Q\+R\+D\+::\+Record\+::\+Record (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Q\+R\+D\+::\+Record\+::\+Record (\begin{DoxyParamCaption}\item[{unsigned int}]{record\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Constructor for \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & is the id of the new record \\
+{\em record\+Id} & is the id of the new record \\
 \hline
 \end{DoxyParams}
 
@@ -106,7 +106,7 @@ the record\textquotesingle{}s id
 \doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily bool Q\+R\+D\+::\+Record\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_q_r_d_1_1_record}{Record}} \&}]{other }\end{DoxyParamCaption}) const}
 
-Compares m\+\_\+\+Data
+Compares records
 
 
 \begin{DoxyParams}{Parameters}
@@ -114,7 +114,7 @@ Compares m\+\_\+\+Data
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if m\+\_\+\+Data = other.\+m\+\_\+\+Data, else false 
+true if the records hold the same data else false 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_q_r_d_1_1_record_adc2b44236c276348d1948b281bb87366}\label{class_q_r_d_1_1_record_adc2b44236c276348d1948b281bb87366}} 
 \index{QRD::Record@{QRD::Record}!SetRecordId@{SetRecordId}}

@@ -114,6 +114,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aca081c16ddedecf534ad8157b3e70a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5371581820fd89233797fb582059875"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_table.html#aa5371581820fd89233797fb582059875">GetTableId</a> () const</td></tr>
 <tr class="separator:aa5371581820fd89233797fb582059875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd809f9a6e86bd7cb271e993f4a2d40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_table.html#a3cd809f9a6e86bd7cb271e993f4a2d40">SetTableId</a> (unsigned int index)</td></tr>
+<tr class="separator:a3cd809f9a6e86bd7cb271e993f4a2d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f9f9d8e4d5e76d9c283c4b77fd0da45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_table.html#a1f9f9d8e4d5e76d9c283c4b77fd0da45">UpdateRecordIds</a> (unsigned int indexOfDeletedElement)</td></tr>
 <tr class="separator:a1f9f9d8e4d5e76d9c283c4b77fd0da45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bcd3bc9935318109dd7377c47e26c94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_table.html#a7bcd3bc9935318109dd7377c47e26c94">UpdateFieldIds</a> (unsigned short indexOfDeletedElement)</td></tr>
@@ -585,14 +587,47 @@ template&lt;typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Compares record ids</p>
+<p>Compares tables</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>is the other table object </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the ids match else false </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the tables hold the same data else false </dd></dl>
+
+</div>
+</div>
+<a id="a3cd809f9a6e86bd7cb271e993f4a2d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cd809f9a6e86bd7cb271e993f4a2d40">&#9670;&nbsp;</a></span>SetTableId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QRD::Table::SetTableId </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Setter for table id, automatically called when deleting a table</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>is the new table id </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

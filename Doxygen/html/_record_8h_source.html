@@ -71,8 +71,8 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Base.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;pch.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;pch.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Base.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>QRD</div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#a8522bc7528900f8edeaea72dd3ce43a4">   18</a></span>&#160;        <a class="code" href="class_q_r_d_1_1_record.html#a8522bc7528900f8edeaea72dd3ce43a4">Record</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#a7fb90e9c1e12de2f7757ae6d23155032">   25</a></span>&#160;        <a class="code" href="class_q_r_d_1_1_record.html#a7fb90e9c1e12de2f7757ae6d23155032">Record</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span>) : m_Id(id) {}</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#a36584bc161e525ea648c2fdc638b52a9">   25</a></span>&#160;        <a class="code" href="class_q_r_d_1_1_record.html#a36584bc161e525ea648c2fdc638b52a9">Record</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> recordId) : m_RecordId(recordId) {}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T<span class="comment">/*, class Enable = std::enable_if_t&lt;std::is_convertible_v&lt;T, std::string&gt;&gt;*/</span>&gt;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> AddData(<span class="keyword">const</span> T&amp; data);</div>
@@ -91,16 +91,16 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="class_q_r_d_1_1_record.html">Record</a>&amp; other) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#ab93ce8b5b0051fbc6ac17ec3288ee882">   55</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_q_r_d_1_1_record.html#ab93ce8b5b0051fbc6ac17ec3288ee882">GetRecordId</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Id; }</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#ab93ce8b5b0051fbc6ac17ec3288ee882">   55</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_q_r_d_1_1_record.html#ab93ce8b5b0051fbc6ac17ec3288ee882">GetRecordId</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_RecordId; }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#adc2b44236c276348d1948b281bb87366">   62</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_q_r_d_1_1_record.html#adc2b44236c276348d1948b281bb87366">SetRecordId</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) { m_Id = index; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_q_r_d_1_1_record.html#adc2b44236c276348d1948b281bb87366">   62</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_q_r_d_1_1_record.html#adc2b44236c276348d1948b281bb87366">SetRecordId</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) { m_RecordId = index; }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> DeleteData(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> fieldId);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        std::vector&lt;std::string&gt; m_Data;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_Id;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_RecordId;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    };</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
@@ -120,9 +120,9 @@ $(function() {
 <div class="ttc" id="aclass_q_r_d_1_1_record_html_a8522bc7528900f8edeaea72dd3ce43a4"><div class="ttname"><a href="class_q_r_d_1_1_record.html#a8522bc7528900f8edeaea72dd3ce43a4">QRD::Record::Record</a></div><div class="ttdeci">Record()=default</div></div>
 <div class="ttc" id="aclass_q_r_d_1_1_record_html_a3022afed3eb28c7d9c5e9fc81767081d"><div class="ttname"><a href="class_q_r_d_1_1_record.html#a3022afed3eb28c7d9c5e9fc81767081d">QRD::Record::AddData</a></div><div class="ttdeci">void AddData(const T &amp;data)</div><div class="ttdef"><b>Definition:</b> Record.h:85</div></div>
 <div class="ttc" id="aclass_q_r_d_1_1_record_html_adc2b44236c276348d1948b281bb87366"><div class="ttname"><a href="class_q_r_d_1_1_record.html#adc2b44236c276348d1948b281bb87366">QRD::Record::SetRecordId</a></div><div class="ttdeci">void SetRecordId(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Record.h:62</div></div>
-<div class="ttc" id="aclass_q_r_d_1_1_record_html_a7fb90e9c1e12de2f7757ae6d23155032"><div class="ttname"><a href="class_q_r_d_1_1_record.html#a7fb90e9c1e12de2f7757ae6d23155032">QRD::Record::Record</a></div><div class="ttdeci">Record(unsigned int id)</div><div class="ttdef"><b>Definition:</b> Record.h:25</div></div>
 <div class="ttc" id="aclass_q_r_d_1_1_record_html_a597325963a0265b17ba092892f638087"><div class="ttname"><a href="class_q_r_d_1_1_record.html#a597325963a0265b17ba092892f638087">QRD::Record::GetRecordData</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; GetRecordData() const</div><div class="ttdef"><b>Definition:</b> Record.h:40</div></div>
 <div class="ttc" id="aclass_q_r_d_1_1_record_html"><div class="ttname"><a href="class_q_r_d_1_1_record.html">QRD::Record</a></div><div class="ttdef"><b>Definition:</b> Record.h:13</div></div>
+<div class="ttc" id="aclass_q_r_d_1_1_record_html_a36584bc161e525ea648c2fdc638b52a9"><div class="ttname"><a href="class_q_r_d_1_1_record.html#a36584bc161e525ea648c2fdc638b52a9">QRD::Record::Record</a></div><div class="ttdeci">Record(unsigned int recordId)</div><div class="ttdef"><b>Definition:</b> Record.h:25</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.19

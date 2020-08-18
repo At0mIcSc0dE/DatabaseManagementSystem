@@ -17,6 +17,8 @@ void \mbox{\hyperlink{class_q_r_d_1_1_database_a8de49d72c82f7fd77b500d2b71e46d68
 \item 
 void \mbox{\hyperlink{class_q_r_d_1_1_database_af614555b76704f9f70499991e8797503}{Delete\+Table}} (const std\+::string \&table\+Name)
 \item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_ade1adb19f8d861bc5bbff3d7bc736a81}{Update\+Table\+Ids}} (unsigned short index\+Of\+Deleted\+Element)
+\item 
 void \mbox{\hyperlink{class_q_r_d_1_1_database_a41c3ebb3051a55fad13624e8bd112927}{Read\+Db}} ()
 \item 
 void \mbox{\hyperlink{class_q_r_d_1_1_database_a872451d5b18a6589d1024624118dcc1e}{Write\+Db}} ()
@@ -25,7 +27,9 @@ void \mbox{\hyperlink{class_q_r_d_1_1_database_ab1fafb836157735b36fc859427fb9af4
 \item 
 void \mbox{\hyperlink{class_q_r_d_1_1_database_ae77b115e2e9f26bb391f46d9b27e5a47}{Reserve\+Tables}} (unsigned int table\+Amnt)
 \item 
-std\+::vector$<$ \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} $>$ \& \mbox{\hyperlink{class_q_r_d_1_1_database_ae770f6cf295219bea0a8788a4d0bc832}{Get\+Tables}} ()
+bool \mbox{\hyperlink{class_q_r_d_1_1_database_ac4f3c35537f55acd0273f2abc4ef4900}{operator==}} (const \mbox{\hyperlink{class_q_r_d_1_1_database}{Database}} \&other)
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} $>$ \& \mbox{\hyperlink{class_q_r_d_1_1_database_ae83f7e5d427660479c79639cd96ad01c}{Get\+Tables}} ()
 \end{DoxyCompactItemize}
 
 
@@ -115,16 +119,32 @@ Finds the table by name
 \begin{DoxyReturn}{Returns}
 the found table, empty table object if not found 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_q_r_d_1_1_database_ae770f6cf295219bea0a8788a4d0bc832}\label{class_q_r_d_1_1_database_ae770f6cf295219bea0a8788a4d0bc832}} 
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ae83f7e5d427660479c79639cd96ad01c}\label{class_q_r_d_1_1_database_ae83f7e5d427660479c79639cd96ad01c}} 
 \index{QRD::Database@{QRD::Database}!GetTables@{GetTables}}
 \index{GetTables@{GetTables}!QRD::Database@{QRD::Database}}
 \doxysubsubsection{\texorpdfstring{GetTables()}{GetTables()}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}}$>$\& Q\+R\+D\+::\+Database\+::\+Get\+Tables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}}$>$\& Q\+R\+D\+::\+Database\+::\+Get\+Tables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Getter for all tables in .dbs file
 
 \begin{DoxyReturn}{Returns}
 all tables 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ac4f3c35537f55acd0273f2abc4ef4900}\label{class_q_r_d_1_1_database_ac4f3c35537f55acd0273f2abc4ef4900}} 
+\index{QRD::Database@{QRD::Database}!operator==@{operator==}}
+\index{operator==@{operator==}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Q\+R\+D\+::\+Database\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_q_r_d_1_1_database}{Database}} \&}]{other }\end{DoxyParamCaption})}
+
+Compares tables
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & is the other table object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the tables hold the same data else false 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_q_r_d_1_1_database_a41c3ebb3051a55fad13624e8bd112927}\label{class_q_r_d_1_1_database_a41c3ebb3051a55fad13624e8bd112927}} 
 \index{QRD::Database@{QRD::Database}!ReadDb@{ReadDb}}
@@ -143,6 +163,19 @@ Function should be called before creating any tables to allocate more memory for
 
 \begin{DoxyParams}{Parameters}
 {\em table\+Amnt} & is the amount of tables the client is going to create \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ade1adb19f8d861bc5bbff3d7bc736a81}\label{class_q_r_d_1_1_database_ade1adb19f8d861bc5bbff3d7bc736a81}} 
+\index{QRD::Database@{QRD::Database}!UpdateTableIds@{UpdateTableIds}}
+\index{UpdateTableIds@{UpdateTableIds}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{UpdateTableIds()}{UpdateTableIds()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Update\+Table\+Ids (\begin{DoxyParamCaption}\item[{unsigned short}]{index\+Of\+Deleted\+Element }\end{DoxyParamCaption})}
+
+Updates table id\textquotesingle{}s after deleting a table
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+Of\+Deleted\+Element} & is the index where the element was before it\textquotesingle{}s deletion \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_q_r_d_1_1_database_a872451d5b18a6589d1024624118dcc1e}\label{class_q_r_d_1_1_database_a872451d5b18a6589d1024624118dcc1e}} 

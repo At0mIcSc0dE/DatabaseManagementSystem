@@ -39,6 +39,8 @@ const std\+::string \& \mbox{\hyperlink{class_q_r_d_1_1_table_aca081c16ddedecf53
 \item 
 unsigned short \mbox{\hyperlink{class_q_r_d_1_1_table_aa5371581820fd89233797fb582059875}{Get\+Table\+Id}} () const
 \item 
+void \mbox{\hyperlink{class_q_r_d_1_1_table_a3cd809f9a6e86bd7cb271e993f4a2d40}{Set\+Table\+Id}} (unsigned int index)
+\item 
 void \mbox{\hyperlink{class_q_r_d_1_1_table_a1f9f9d8e4d5e76d9c283c4b77fd0da45}{Update\+Record\+Ids}} (unsigned int index\+Of\+Deleted\+Element)
 \item 
 void \mbox{\hyperlink{class_q_r_d_1_1_table_a7bcd3bc9935318109dd7377c47e26c94}{Update\+Field\+Ids}} (unsigned short index\+Of\+Deleted\+Element)
@@ -275,7 +277,7 @@ the table\textquotesingle{}s name
 \doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily bool Q\+R\+D\+::\+Table\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \&}]{other }\end{DoxyParamCaption}) const}
 
-Compares record ids
+Compares tables
 
 
 \begin{DoxyParams}{Parameters}
@@ -283,8 +285,21 @@ Compares record ids
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the ids match else false 
+true if the tables hold the same data else false 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_table_a3cd809f9a6e86bd7cb271e993f4a2d40}\label{class_q_r_d_1_1_table_a3cd809f9a6e86bd7cb271e993f4a2d40}} 
+\index{QRD::Table@{QRD::Table}!SetTableId@{SetTableId}}
+\index{SetTableId@{SetTableId}!QRD::Table@{QRD::Table}}
+\doxysubsubsection{\texorpdfstring{SetTableId()}{SetTableId()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Table\+::\+Set\+Table\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for table id, automatically called when deleting a table
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & is the new table id \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_q_r_d_1_1_table_a7bcd3bc9935318109dd7377c47e26c94}\label{class_q_r_d_1_1_table_a7bcd3bc9935318109dd7377c47e26c94}} 
 \index{QRD::Table@{QRD::Table}!UpdateFieldIds@{UpdateFieldIds}}
 \index{UpdateFieldIds@{UpdateFieldIds}!QRD::Table@{QRD::Table}}

@@ -87,6 +87,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8de49d72c82f7fd77b500d2b71e46d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af614555b76704f9f70499991e8797503"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#af614555b76704f9f70499991e8797503">DeleteTable</a> (const std::string &amp;tableName)</td></tr>
 <tr class="separator:af614555b76704f9f70499991e8797503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade1adb19f8d861bc5bbff3d7bc736a81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#ade1adb19f8d861bc5bbff3d7bc736a81">UpdateTableIds</a> (unsigned short indexOfDeletedElement)</td></tr>
+<tr class="separator:ade1adb19f8d861bc5bbff3d7bc736a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c3ebb3051a55fad13624e8bd112927"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#a41c3ebb3051a55fad13624e8bd112927">ReadDb</a> ()</td></tr>
 <tr class="separator:a41c3ebb3051a55fad13624e8bd112927"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a872451d5b18a6589d1024624118dcc1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#a872451d5b18a6589d1024624118dcc1e">WriteDb</a> ()</td></tr>
@@ -95,8 +97,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab1fafb836157735b36fc859427fb9af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae77b115e2e9f26bb391f46d9b27e5a47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#ae77b115e2e9f26bb391f46d9b27e5a47">ReserveTables</a> (unsigned int tableAmnt)</td></tr>
 <tr class="separator:ae77b115e2e9f26bb391f46d9b27e5a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae770f6cf295219bea0a8788a4d0bc832"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_q_r_d_1_1_table.html">Table</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#ae770f6cf295219bea0a8788a4d0bc832">GetTables</a> ()</td></tr>
-<tr class="separator:ae770f6cf295219bea0a8788a4d0bc832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4f3c35537f55acd0273f2abc4ef4900"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#ac4f3c35537f55acd0273f2abc4ef4900">operator==</a> (const <a class="el" href="class_q_r_d_1_1_database.html">Database</a> &amp;other)</td></tr>
+<tr class="separator:ac4f3c35537f55acd0273f2abc4ef4900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83f7e5d427660479c79639cd96ad01c"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_q_r_d_1_1_table.html">Table</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_r_d_1_1_database.html#ae83f7e5d427660479c79639cd96ad01c">GetTables</a> ()</td></tr>
+<tr class="separator:ae83f7e5d427660479c79639cd96ad01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main <a class="el" href="class_q_r_d_1_1_database.html">Database</a> class, should be instantiated by the client to manage your database </p>
@@ -258,8 +262,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae770f6cf295219bea0a8788a4d0bc832"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae770f6cf295219bea0a8788a4d0bc832">&#9670;&nbsp;</a></span>GetTables()</h2>
+<a id="ae83f7e5d427660479c79639cd96ad01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae83f7e5d427660479c79639cd96ad01c">&#9670;&nbsp;</a></span>GetTables()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +272,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_q_r_d_1_1_table.html">Table</a>&gt;&amp; QRD::Database::GetTables </td>
+          <td class="memname">const std::vector&lt;<a class="el" href="class_q_r_d_1_1_table.html">Table</a>&gt;&amp; QRD::Database::GetTables </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -282,6 +286,32 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Getter for all tables in .dbs file</p>
 <dl class="section return"><dt>Returns</dt><dd>all tables </dd></dl>
+
+</div>
+</div>
+<a id="ac4f3c35537f55acd0273f2abc4ef4900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4f3c35537f55acd0273f2abc4ef4900">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QRD::Database::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_q_r_d_1_1_database.html">Database</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Compares tables</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>is the other table object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the tables hold the same data else false </dd></dl>
 
 </div>
 </div>
@@ -322,6 +352,31 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tableAmnt</td><td>is the amount of tables the client is going to create </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ade1adb19f8d861bc5bbff3d7bc736a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade1adb19f8d861bc5bbff3d7bc736a81">&#9670;&nbsp;</a></span>UpdateTableIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QRD::Database::UpdateTableIds </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>indexOfDeletedElement</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Updates table id's after deleting a table</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indexOfDeletedElement</td><td>is the index where the element was before it's deletion </td></tr>
   </table>
   </dd>
 </dl>
