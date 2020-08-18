@@ -22,5 +22,5 @@ void Application::Run()
 	OneTimeExp.AddRecord("Christa", 32, "", 3, 3, 3333, "c", "c");
 
 	m_Database.ExitDb();
-	QRD_LOG(totalAllocs);
+	//QRD_LOG(totalAllocs);
 }

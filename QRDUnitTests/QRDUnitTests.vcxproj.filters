@@ -18,11 +18,11 @@
     <ClCompile Include="src\UnitTests\QRDUnitTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Assert\Assert.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ToStringImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Assert\Assert.h">
       <Filter>Header Files</Filter>
     </ClInclude>

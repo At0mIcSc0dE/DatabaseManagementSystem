@@ -1,7 +1,7 @@
 #include "CppUnitTest.h"
 #include "../Assert/Assert.h"
-
 #include <QRD/QRD.h>
+//#include "../ToStringImpl.h"
 
 
 namespace QRDUnitTests
@@ -17,11 +17,7 @@ namespace QRDUnitTests
 
 		TEST_METHOD(CreateDatabase)
 		{
-			std::string h1 = "Hello World";
-			std::string h2 = "Hello World2";
-			QRDTest::Assert::AreEqual(std::ref(h1), std::ref(h2), "Hello World");
-
-			//MVCUF::Assert::AreEqual({}, m_Db.GetTables());
+			QRDTest::Assert::AreEqual({}, m_Db.GetTables(), "Error");
 		}
 
 		TEST_METHOD(CreateTable)

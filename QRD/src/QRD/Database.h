@@ -97,7 +97,7 @@ namespace QRD
 		*
 		* @returns all tables
 		*/
-		std::vector<Table>& GetTables() { return m_Tables; }
+		const std::vector<Table>& GetTables() { return m_Tables; }
 
 	private:
 		void ReadFields(std::ifstream& reader, std::string& line);
