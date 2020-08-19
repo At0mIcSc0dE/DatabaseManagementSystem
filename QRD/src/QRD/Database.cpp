@@ -38,6 +38,16 @@ namespace QRD
 		
 	}
 
+	bool Database::TableExists(const std::string& tableName)
+	{
+		for (auto& table : m_Tables)
+		{
+			if (table.GetTableName() == tableName)
+				return true;
+		}
+		return false;
+	}
+
 	void Database::DeleteTable(const Table& table)
 	{
 		for (const Table& tab : m_Tables)
@@ -157,6 +167,9 @@ namespace QRD
 		Table& table = m_Tables[m_Tables.size() - 1];
 
 		std::getline(reader, line);
+		if (line == "")
+			return;
+
 		unsigned short recordNr = std::stoi(line.replace(0, 9, ""));
 
 		if (recordNr == 0)

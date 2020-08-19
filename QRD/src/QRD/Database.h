@@ -42,6 +42,14 @@ namespace QRD
 		Table& GetTable(const std::string& tableName);
 
 		/**
+		* Checks if the table already exists
+		* 
+		* @param tableName is the name of the table
+		* @return true if the table exists else false
+		*/
+		bool TableExists(const std::string& tableName);
+
+		/**
 		* Deletes the table
 		*
 		* @param table is the table to delete
@@ -97,7 +105,14 @@ namespace QRD
 		*
 		* @returns all tables
 		*/
-		const std::vector<Table>& GetTables() { return m_Tables; }
+		const std::vector<Table>& GetTables() const { return m_Tables; }
+
+		/**
+		* Getter for .dbs file filepath
+		* 
+		* @returns the path to the .dbs file
+		*/
+		const std::string& GetFilePath() const { return m_DBFilePath; }
 
 	private:
 		void ReadFields(std::ifstream& reader, std::string& line);

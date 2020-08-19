@@ -17,7 +17,7 @@ void operator delete(void* data, size_t size)
 int main()
 {
 	//QRD_LOG_CLEAR();
-	Application app("C:\\dev\\ProgramFiles\\DBMS\\DB.dbs");
+	Application app("D:\\dev\\ProgramFiles\\DBMS\\DB.dbs");
 	app.Run();
 
 }

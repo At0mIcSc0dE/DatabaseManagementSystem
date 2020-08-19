@@ -20,10 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ToStringImpl.h">
+    <ClInclude Include="src\Logger\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Assert\Assert.h">
+    <ClInclude Include="src\ToStringDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
