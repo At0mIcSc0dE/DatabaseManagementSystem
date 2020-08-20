@@ -21,7 +21,9 @@ namespace QRD
 		* Constructor for Database object
 		*
 		* @param filePath is the path to the .dbs file
-		* @param tableAmnt is the total amount of tables the program will allocate memory for
+		* @param tableAmnt is the total amount of tables the program should allocate memory for
+		* @param fieldAmnt is the total amount of fields the program should allocate memory for
+		* @param recordAmnt is the total amount of records the program should allocate memory for
 		*/
 		Database(const std::string& filePath, size_t tableAmnt = 10, size_t fieldAmnt = 10, size_t recordAmnt = 20);
 
@@ -73,7 +75,7 @@ namespace QRD
 		/**
 		* Revalidates references which point to the wrong address because of vector resizing
 		* 
-		* @prarm args are all the invalid references with type Table;
+		* @param args are all the invalid references with type Table;
 		*/
 		template<typename... Args>
 		void RevalidateReferences(Args&... args);
