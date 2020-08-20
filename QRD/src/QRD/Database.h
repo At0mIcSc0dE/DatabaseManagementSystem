@@ -122,8 +122,6 @@ namespace QRD
 		*/
 		const std::string& GetFilePath() const { return m_DBFilePath; }
 
-		//void RevalidateReference(Table& ref);
-
 	private:
 		void ReadFields(std::ifstream& reader, std::string& line);
 		void ReadRecords(std::ifstream& reader, std::string& line);
@@ -172,22 +170,6 @@ namespace QRD
 		
 		(RevalidateReference(args, this), ...);
 	}
-
-
-	//inline void Database::RevalidateReference(Table& ref)
-	//{
-	//	Table* ptr = &ref;
-	//	for (unsigned int i = 0; i < m_TablePosInVec.size(); ++i)
-	//	{
-	//		if (m_TablePosInVec[i].first == ptr)
-	//		{
-	//			ptr = &m_Tables[m_TablePosInVec[i].second];
-	//			m_TablePosInVec[i].first = ptr;
-	//			break;
-	//		}
-	//	}
-	//	memmove(&ref, ptr, sizeof(Table));
-	//}
 }
 
 

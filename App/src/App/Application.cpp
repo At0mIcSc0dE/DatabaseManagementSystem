@@ -16,8 +16,8 @@ void Application::Run()
 {
 	/**
 	* TODO:
-	*	Add check if table with name already exists
 	*	Invalidate Objects if they were deleted
+	*	Decide whether the client should call RevalidateReferences or if QRD should detect vector resizing and call it itself
 	*/
 
 	QRD::Table& tb1 = m_Database.CreateTable("Table1");

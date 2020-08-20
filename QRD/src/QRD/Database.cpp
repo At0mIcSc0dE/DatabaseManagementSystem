@@ -7,7 +7,7 @@ namespace QRD
 	Database::Database(const std::string& filePath, size_t tableAmnt, size_t fieldAmnt, size_t recordAmnt)
 		: m_DBFilePath(filePath), m_Tables{}
 	{
-		auto FileExists = [](const std::string& filePath)
+		bool(*FileExists)(const std::string& filePath) = [](const std::string& filePath)
 		{
 			struct stat buffer;
 			return (stat(filePath.c_str(), &buffer) == 0);
@@ -25,7 +25,7 @@ namespace QRD
 		Table table(tableName, (const int)m_Tables.size());
 
 		m_Tables.emplace_back(std::move(table));
-		m_TablePosInVec.emplace_back(&m_Tables[m_Tables.size() - 1], m_Tables.size() - 1);
+		m_TablePosInVec.emplace_back(&m_Tables[m_Tables.size() - 1], (unsigned int)(m_Tables.size() - 1));
 
 		return m_Tables[m_Tables.size() - 1];
 	}
@@ -37,7 +37,7 @@ namespace QRD
 			if (table.GetTableName() == tableName)
 				return table;
 		}
-		
+		throw std::invalid_argument("Couldn't find table with name " + tableName);
 	}
 
 	bool Database::TableExists(const std::string& tableName)
