@@ -32,3 +32,4 @@ bin/Release-Win32/App.pdb
 bin/Release-x64/App.exe
 bin/Release-x64/App.ilk
 bin/Release-x64/App.pdb
+Doxygen/
