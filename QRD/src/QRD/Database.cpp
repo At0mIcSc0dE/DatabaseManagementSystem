@@ -204,6 +204,11 @@ namespace QRD
 		m_Tables.reserve(tableAmnt);
 	}
 
+	bool Database::operator==(const Database& other)
+	{
+		return (m_DBFilePath == other.m_DBFilePath && m_Tables == other.m_Tables);
+	}
+
 }
 
 
