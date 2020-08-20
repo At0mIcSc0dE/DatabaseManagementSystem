@@ -13,5 +13,6 @@ namespace QRD
     {
         return m_FieldName == other.GetFieldName() && m_FieldType == other.GetFieldType() && m_FieldId == other.GetFieldId();
     }
+
 }
 

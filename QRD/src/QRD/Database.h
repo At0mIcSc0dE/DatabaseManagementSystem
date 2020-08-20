@@ -23,7 +23,7 @@ namespace QRD
 		* @param filePath is the path to the .dbs file
 		* @param tableAmnt is the total amount of tables the program will allocate memory for
 		*/
-		Database(const std::string& filePath, unsigned short tableAmnt = 10);
+		Database(const std::string& filePath, size_t tableAmnt = 10, size_t fieldAmnt = 10, size_t recordAmnt = 20);
 
 		/**
 		* Creates a new table, adds it to m_Data
@@ -71,9 +71,17 @@ namespace QRD
 		void UpdateTableIds(unsigned short indexOfDeletedElement);
 
 		/**
+		* Revalidates references which point to the wrong address because of vector resizing
+		* 
+		* @prarm args are all the invalid references with type Table;
+		*/
+		template<typename... Args>
+		void RevalidateReferences(Args&... args);
+
+		/**
 		* Reads database stored in file into memory
 		*/
-		void ReadDb();
+		void ReadDb(size_t fieldAmnt = 10, size_t recordAmnt = 20);
 
 		/**
 		* Writes the database stored in memory to file
@@ -114,9 +122,12 @@ namespace QRD
 		*/
 		const std::string& GetFilePath() const { return m_DBFilePath; }
 
+		//void RevalidateReference(Table& ref);
+
 	private:
 		void ReadFields(std::ifstream& reader, std::string& line);
 		void ReadRecords(std::ifstream& reader, std::string& line);
+
 
 	private:
 		
@@ -124,12 +135,59 @@ namespace QRD
 		* Datastructure holding all tables and their corresponding records
 		*/
 		std::vector<Table> m_Tables;
+
+		/**
+		* Datastructure used to revalidate references
+		* Table* is the memory address of the Table and
+		* unsigned int is the index in m_Tables
+		*/
+		std::vector<std::pair<Table*, unsigned int>> m_TablePosInVec;
 		
 		/**
 		* File path to the .dbs file
 		*/
 		const std::string m_DBFilePath;
 	};
+
+
+	template<typename ...Args>
+	inline void Database::RevalidateReferences(Args& ...args)
+	{
+		void(*RevalidateReference)(Table& ref, Database* db) = [](Table& ref, Database* db)
+		{
+			Table* ptr = &ref;
+			for (unsigned int i = 0; i < db->m_TablePosInVec.size(); ++i)
+			{
+				if (db->m_TablePosInVec[i].first == ptr)
+				{
+					ptr = &db->m_Tables[db->m_TablePosInVec[i].second];
+					db->m_TablePosInVec[i].first = ptr;
+					break;
+				}
+			}
+
+			if(&ref != ptr)
+				memmove(&ref, ptr, sizeof(Table));
+		};
+		
+		(RevalidateReference(args, this), ...);
+	}
+
+
+	//inline void Database::RevalidateReference(Table& ref)
+	//{
+	//	Table* ptr = &ref;
+	//	for (unsigned int i = 0; i < m_TablePosInVec.size(); ++i)
+	//	{
+	//		if (m_TablePosInVec[i].first == ptr)
+	//		{
+	//			ptr = &m_Tables[m_TablePosInVec[i].second];
+	//			m_TablePosInVec[i].first = ptr;
+	//			break;
+	//		}
+	//	}
+	//	memmove(&ref, ptr, sizeof(Table));
+	//}
 }
 
 

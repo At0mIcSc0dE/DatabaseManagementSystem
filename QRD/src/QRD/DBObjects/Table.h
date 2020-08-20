@@ -13,6 +13,7 @@ namespace QRD
 	*/
 	class QRD_API Table
 	{
+		friend class Database;
 	public:
 		/**
 		* Constructor for Table object

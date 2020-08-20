@@ -4,7 +4,7 @@
 
 namespace QRD
 {
-	Database::Database(const std::string& filePath, unsigned short tableAmnt)
+	Database::Database(const std::string& filePath, size_t tableAmnt, size_t fieldAmnt, size_t recordAmnt)
 		: m_DBFilePath(filePath), m_Tables{}
 	{
 		auto FileExists = [](const std::string& filePath)
@@ -17,7 +17,7 @@ namespace QRD
 			throw std::invalid_argument("Path to file not found!");
 
 		m_Tables.reserve(tableAmnt);
-		ReadDb();
+		ReadDb(fieldAmnt, recordAmnt);
 	}
 
 	Table& Database::CreateTable(const std::string& tableName)
@@ -25,6 +25,8 @@ namespace QRD
 		Table table(tableName, (const int)m_Tables.size());
 
 		m_Tables.emplace_back(std::move(table));
+		m_TablePosInVec.emplace_back(&m_Tables[m_Tables.size() - 1], m_Tables.size() - 1);
+
 		return m_Tables[m_Tables.size() - 1];
 	}
 
@@ -50,10 +52,17 @@ namespace QRD
 
 	void Database::DeleteTable(const Table& table)
 	{
+		unsigned int tableId;
 		for (const Table& tab : m_Tables)
 		{
 			if (tab == table)
+			{
+				tableId = m_Tables[tab.GetTableId()].GetTableId();
+
 				m_Tables.erase(m_Tables.begin() + tab.GetTableId());
+				m_TablePosInVec.erase(m_TablePosInVec.begin() + tab.GetTableId());
+				UpdateTableIds(tableId);
+			}
 		}
 	}
 
@@ -61,8 +70,15 @@ namespace QRD
 	{
 		for (const Table& tab : m_Tables)
 		{
+			unsigned int tableId;
 			if (tab.GetTableName() == tableName)
+			{
+				tableId = m_Tables[tab.GetTableId()].GetTableId();
+
 				m_Tables.erase(m_Tables.begin() + tab.GetTableId());
+				m_TablePosInVec.erase(m_TablePosInVec.begin() + tab.GetTableId());
+				UpdateTableIds(tableId);
+			}
 		}
 	}
 
@@ -71,10 +87,11 @@ namespace QRD
 		for (unsigned int i = indexOfDeletedElement; i < m_Tables.size(); ++i)
 		{
 			m_Tables[i].SetTableId(i);
+			//m_TablePosInVec[i].first->SetTableId(i);
 		}
 	}
 
-	void Database::ReadDb()
+	void Database::ReadDb(size_t fieldAmnt, size_t recordAmnt)
 	{
 		QRD_ASSERT(m_DBFilePath != "");
 		std::ifstream reader(m_DBFilePath);
@@ -91,6 +108,9 @@ namespace QRD
 		for (unsigned short i = 0; i < tableNr; ++i)
 		{
 			Table& table = this->CreateTable(line.replace(0, 7, ""));
+
+			table.m_Fields.reserve(fieldAmnt);
+			table.m_Records.reserve(recordAmnt);
 
 			ReadFields(reader, line);
 			ReadRecords(reader, line);
@@ -145,7 +165,7 @@ namespace QRD
 		std::getline(reader, line);
 		std::getline(reader, line);
 		std::getline(reader, line);
-
+		
 		while (line != "}")
 		{
 			unsigned char typeIdx = (unsigned char)line.find(':') + 1;

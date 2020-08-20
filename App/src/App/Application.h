@@ -34,6 +34,5 @@ private:
 	*/
 	QRD::Database m_Database;
 
-	std::unordered_map<std::string, std::vector<std::string>> m_Tables;
 };
 
