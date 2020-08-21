@@ -76,6 +76,7 @@ namespace QRD
 		* Revalidates references which point to the wrong address because of vector resizing
 		* 
 		* @param args are all the invalid references with type Table;
+		* @warning this function doesn't work correctly if you deleted a table during the current session
 		*/
 		template<typename... Args>
 		void RevalidateReferences(Args&... args);

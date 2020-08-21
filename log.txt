@@ -1,2 +1,2 @@
-[12:7:51]: Timer in file ystem\QRD\src\QRD\Database.cpp, function QRD::Database::ReadDb, line 97 took 3828325us
-[12:7:51]: Timer in file ystem\QRD\src\QRD\DBObjects\Table.h, function QRD::Table::GetRecordsByValues, line 211 took 4281us
+[14:54:49]: Timer in file ystem\QRD\src\QRD\Database.cpp, function QRD::Database::ReadDb, line 97 took 1000us
+[14:54:49]: Timer in file ystem\QRD\src\QRD\Database.cpp, function QRD::Database::WriteDb, line 126 took 267us
