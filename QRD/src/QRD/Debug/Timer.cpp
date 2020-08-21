@@ -2,7 +2,7 @@
 #include "Timer.h"
 
 
-namespace Calculator
+namespace QRD
 {
 	Timer::Timer(const std::string& text)
 	{

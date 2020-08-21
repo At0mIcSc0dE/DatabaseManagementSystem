@@ -22,8 +22,8 @@ namespace QRD
 		*
 		* @param filePath is the path to the .dbs file
 		* @param tableAmnt is the total amount of tables the program should allocate memory for
-		* @param fieldAmnt is the total amount of fields the program should allocate memory for
-		* @param recordAmnt is the total amount of records the program should allocate memory for
+		* @param fieldAmnt is the total amount of fields per table the program should allocate memory for
+		* @param recordAmnt is the total amount of records per table the program should allocate memory for
 		*/
 		Database(const std::string& filePath, size_t tableAmnt = 10, size_t fieldAmnt = 10, size_t recordAmnt = 20);
 
@@ -141,7 +141,7 @@ namespace QRD
 		* Table* is the memory address of the Table and
 		* unsigned int is the index in m_Tables
 		*/
-		std::vector<std::pair<Table*, unsigned int>> m_TablePosInVec;
+		std::vector<std::pair<Table*, unsigned short>> m_TablePosInVec;
 		
 		/**
 		* File path to the .dbs file

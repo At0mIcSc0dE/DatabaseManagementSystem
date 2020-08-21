@@ -5,6 +5,8 @@
 #include "Field.h"
 #include "Record.h"
 
+#include "QRD/Debug/Timer.h"
+
 
 namespace QRD
 {
@@ -79,7 +81,7 @@ namespace QRD
 		* @returns a vector of all found records with specifications
 		*/
 		template<typename... Args>
-		std::vector<Record> GetRecordsByValues(const Args&... commandStrs);
+		std::vector<Record*> GetRecordsByValues(const Args&... commandStrs);
 
 		/**
 		* Returns the record by id
@@ -204,9 +206,10 @@ namespace QRD
 	}
 
 	template<typename... Args>
-	inline std::vector<Record> Table::GetRecordsByValues(const Args&... commandStrs)
+	inline std::vector<Record*> Table::GetRecordsByValues(const Args&... commandStrs)
 	{
-		std::vector<Record> recs = m_Records;
+		TIMER;
+		std::vector<Record*> recs{};
 		std::vector<std::string_view> commands{ commandStrs... };
 
 		/**
@@ -237,30 +240,27 @@ namespace QRD
 		//	}
 		//}
 
-		unsigned short dataIdx;
 		std::string_view searchData;
 		std::string_view fieldName;
 		for (auto& cmd : commands)
 		{
+			unsigned short dataIdx;
 			dataIdx = cmd.find(":") + 1;
 			searchData = cmd.substr(dataIdx);
 			fieldName = cmd.substr(0, dataIdx - 1);
 		}
 
-		for (unsigned int i = 0; i < recs.size(); ++i)
+		Field& field = this->GetField(fieldName);
+		for (size_t i = 0; i < m_Records.size() ; ++i)
 		{
-			Field& field = this->GetField(fieldName);
-			unsigned short fieldId = field.GetFieldId();
 			for (auto& cmd : commands)
 			{
-				if (recs[i].GetRecordData()[fieldId] != searchData)
+				if (m_Records[i].GetRecordData()[field.GetFieldId()] == searchData)
 				{
-					recs.erase(recs.begin() + i);
-					--i;
+					recs.emplace_back(&m_Records[i]);
 				}
 			}
 		}
-
 		return recs;
 	}
 

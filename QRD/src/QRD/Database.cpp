@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Database.h"
+#include "Debug/Timer.h"
 
 
 namespace QRD
@@ -93,6 +94,7 @@ namespace QRD
 
 	void Database::ReadDb(size_t fieldAmnt, size_t recordAmnt)
 	{
+		TIMER;
 		QRD_ASSERT(m_DBFilePath != "");
 		std::ifstream reader(m_DBFilePath);
 
@@ -102,6 +104,8 @@ namespace QRD
 			return;
 
 		unsigned short tableNr = std::stoi(line.replace(0, 8, ""));
+		if(m_Tables.capacity() < tableNr)
+			m_Tables.reserve(tableNr);
 
 		std::getline(reader, line);
 
@@ -119,6 +123,7 @@ namespace QRD
 
 	void Database::WriteDb()
 	{
+		TIMER;
 		QRD_ASSERT(m_DBFilePath != "");
 		std::ofstream writer(m_DBFilePath);
 		writer << "TABLES: " << m_Tables.size() << '\n';

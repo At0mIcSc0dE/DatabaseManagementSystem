@@ -16,6 +16,9 @@ namespace QRD
             if (field.GetFieldName() == fieldName)
                 return field;
         }
+        std::stringstream ss;
+        ss << "Couldn't find field with name " << fieldName;
+        throw std::invalid_argument(ss.str());
     }
 
     void Table::DeleteField(const Field& field)
