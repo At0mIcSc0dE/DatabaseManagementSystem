@@ -51,7 +51,7 @@ namespace QRD
 		return false;
 	}
 
-	void Database::DeleteTable(const Table& table)
+	void Database::DeleteTable(Table& table)
 	{
 		unsigned int tableId;
 		for (const Table& tab : m_Tables)
@@ -62,6 +62,7 @@ namespace QRD
 
 				m_Tables.erase(m_Tables.begin() + tab.GetTableId());
 				m_TablePosInVec.erase(m_TablePosInVec.begin() + tab.GetTableId());
+
 				UpdateTableIds(tableId);
 			}
 		}

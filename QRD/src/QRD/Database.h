@@ -56,7 +56,7 @@ namespace QRD
 		*
 		* @param table is the table to delete
 		*/
-		void DeleteTable(const Table& table);
+		void DeleteTable(Table& table);
 
 		/**
 		* Deletes the table
