@@ -75,6 +75,17 @@ namespace QRD
 		Record& AddRecord(const Args&... data);
 
 		/**
+		* Inserts a record at given position
+		*
+		* @param pos is the position in m_Records where the record will be inserted
+		* @param data is the data corresponding to the fields to insert
+		* @returns a reference to the new record
+		* @warning if the vector which stores the records gets resized, all references will be invalid
+		*/
+		template<typename... Args>
+		Record& InsertRecord(unsigned int pos, const Args&... data);
+
+		/**
 		* Finds all records with specific values
 		*
 		* @param commandStrs are the search specifications, e.g. "field1:MyName", "field3:32"...
@@ -105,7 +116,7 @@ namespace QRD
 		* @param newData is the new data to insert into the record
 		*/
 		template<typename... Args>
-		void EditRecord(const Record& record, const Args&... newData);
+		void EditRecord(Record& record, const Args&... newData);
 
 		/**
 		* Deletes the record and updates indices
@@ -154,14 +165,14 @@ namespace QRD
 		/**
 		* Updates record id's after deleting a record
 		*
-		* @param indexOfDeletedElement is the index where the element was before it's deletion
+		* @param indexOfElement is the index where the element was before its deletion/after its creation
 		*/
 		void UpdateRecordIds(unsigned int indexOfDeletedElement);
 
 		/**
 		* Updates field id's after deleting a field
 		*
-		* @param indexOfDeletedElement is the index where the element was before it's deletion
+		* @param indexOfElement is the index where the element was before its deletion/after its creation
 		*/
 		void UpdateFieldIds(unsigned short indexOfDeletedElement);
 
@@ -201,8 +212,20 @@ namespace QRD
 	{
 		Record rec((unsigned int)m_Records.size());
 		(rec.AddData(data), ...);
-		m_Records.emplace_back(std::move(rec));
-		return m_Records[m_Records.size() - 1];
+		return m_Records.emplace_back(std::move(rec));
+	}
+
+	template<typename... Args>
+	inline Record& Table::InsertRecord(unsigned int pos, const Args&... data)
+	{
+		if (pos >= m_Records.size())
+			throw std::invalid_argument("Argument pos is out of range");
+
+		Record rec(pos);
+		(rec.AddData(data), ...);
+		m_Records.insert(m_Records.begin() + pos, std::move(rec));
+		UpdateRecordIds(pos);
+		return m_Records[pos];
 	}
 
 	template<typename... Args>
@@ -212,39 +235,11 @@ namespace QRD
 		std::vector<Record*> recs{};
 		std::vector<std::string_view> commands{ commandStrs... };
 
-		/**
-		* Add this and remove recs = m_Records copy if you want to avoid copying all records
-		*/
-
-		//for (auto& cmd : commands)
-		//{
-		//	unsigned short dataIdx = cmd.find(":") + 1;
-		//	std::string_view searchData = cmd.substr(dataIdx);
-		//	std::string_view fieldName = cmd.substr(0, dataIdx - 1);
-
-		//	Field& field = this->GetField(fieldName);
-		//	unsigned short fieldIdx = field.GetFieldId();
-
-		//	for (auto& record : m_Records)
-		//	{
-		//		for (auto& data : record.GetData())
-		//		{
-		//			if (data == searchData)
-		//			{
-		//				if (!std::count(recs.begin(), recs.end(), record))
-		//				{
-		//					recs.emplace_back(record);
-		//				}
-		//			}
-		//		}
-		//	}
-		//}
-
 		std::string_view searchData;
 		std::string_view fieldName;
 		for (auto& cmd : commands)
 		{
-			unsigned short dataIdx;
+			size_t dataIdx;
 			dataIdx = cmd.find(":") + 1;
 			searchData = cmd.substr(dataIdx);
 			fieldName = cmd.substr(0, dataIdx - 1);
@@ -257,7 +252,8 @@ namespace QRD
 			{
 				if (m_Records[i].GetRecordData()[field.GetFieldId()] == searchData)
 				{
-					recs.emplace_back(&m_Records[i]);
+					if(std::find(recs.begin(), recs.end(), &m_Records[i]) == recs.end())
+						recs.emplace_back(&m_Records[i]);
 				}
 			}
 		}
@@ -265,9 +261,11 @@ namespace QRD
 	}
 
 	template<typename... Args>
-	void Table::EditRecord(const Record& record, const Args&... newData)
+	void Table::EditRecord(Record& record, const Args&... newData)
 	{
-		
+		unsigned int pos = record.GetRecordId();
+		DeleteRecord(record);
+		InsertRecord(pos, newData...);
 	}
 
 	template<typename... Args>
@@ -281,7 +279,5 @@ namespace QRD
 			m_Records.erase(m_Records.begin() + recId);
 			UpdateRecordIds(recId);
 		}
-
 	}
-
 }

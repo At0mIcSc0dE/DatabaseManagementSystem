@@ -70,17 +70,17 @@ namespace QRD
         return false;
     }
 
-    void Table::UpdateRecordIds(unsigned int indexOfDeletedElement)
+    void Table::UpdateRecordIds(unsigned int indexOfElement)
     {
-        for (unsigned int i = indexOfDeletedElement; i < m_Records.size(); ++i)
+        for (unsigned int i = indexOfElement; i < m_Records.size(); ++i)
         {
             m_Records[i].SetRecordId(i);
         }
     }
 
-    void Table::UpdateFieldIds(unsigned short indexOfDeletedElement)
+    void Table::UpdateFieldIds(unsigned short indexOfElement)
     {
-        for (unsigned int i = indexOfDeletedElement; i < m_Fields.size(); ++i)
+        for (unsigned int i = indexOfElement; i < m_Fields.size(); ++i)
         {
             m_Fields[i].SetFieldId(i);
         }

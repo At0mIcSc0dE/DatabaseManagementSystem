@@ -23,7 +23,7 @@ namespace QRD
 }
 
 #if QRD_TIMER_ACTIVE
-	#define TIMER QRD::Timer t(std::string("Timer in file ") + std::string(__FILE__).replace(0, 39, "") + std::string(", function ") + std::string(__FUNCTION__) + std::string(", line ") + std::to_string(__LINE__) + std::string(" took "))
+	#define TIMER QRD::Timer t(std::string("Timer in file ") + std::string(__FILE__).replace(0, 45, "") + std::string(", function ") + std::string(__FUNCTION__) + std::string(", line ") + std::to_string(__LINE__) + std::string(" took "))
 #else
 	#define TIMER
 #endif

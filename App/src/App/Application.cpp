@@ -7,9 +7,8 @@ extern size_t totalAllocs;
 
 
 Application::Application(const std::string& filePath)
-	: m_Running(true), m_Database(filePath, 4, 6, 10000)
+	: m_Running(true), m_Database(filePath)
 {
-	
 }
 
 void Application::Run()
@@ -21,6 +20,6 @@ void Application::Run()
 	*	Test deletion
 	*/
 
-	m_Database.ExitDb();
+
 	//QRD_LOG(totalAllocs);
 }
