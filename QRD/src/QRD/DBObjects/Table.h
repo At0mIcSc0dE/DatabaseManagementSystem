@@ -5,7 +5,7 @@
 #include "Field.h"
 #include "Record.h"
 
-#include "QRD/Debug/Timer.h"
+#include "QRD/ExceptionHandlers/Exception.h"
 
 
 namespace QRD
@@ -17,14 +17,6 @@ namespace QRD
 	{
 		friend class Database;
 	public:
-		/**
-		* Constructor for Table object
-		*
-		* @param tableName is the name under which the table will be stored
-		* @param id is the index of the table in Database::m_Tables
-		*/
-		Table(const std::string& tableName, const int id);
-
 		/**
 		* Adds a new field to the current table
 		*
@@ -42,6 +34,14 @@ namespace QRD
 		* @returns the found field, if it does not find anything it doesn't return
 		*/
 		Field& GetField(const std::string_view fieldName);
+
+		/**
+		* Checks if field exists in current table
+		* 
+		* @param fieldName is the name of the field
+		* @returns true if the field exists, false otherwise
+		*/
+		bool FieldExists(const std::string_view fieldName);
 
 		/**
 		* Getter for all fields
@@ -178,6 +178,23 @@ namespace QRD
 
 	private:
 		/**
+		* Constructor for Table object
+		*
+		* @param tableName is the name under which the table will be stored
+		* @param id is the index of the table in Database::m_Tables
+		*/
+		Table(const std::string& tableName, const short id);
+
+		/**
+		* Function checks if commands passed as parameter to the FindRecordsByValues function are syntactically correct
+		* 
+		* @param commands is a list of all commands
+		* @throws QRD::InvalidCommandException if one or more commands are invalid
+		*/
+		void ValidateCommands(const std::vector<std::string_view>& commands);
+
+	private:
+		/**
 		* The table's name
 		*/
 		std::string m_TableName;
@@ -218,9 +235,6 @@ namespace QRD
 	template<typename... Args>
 	inline Record& Table::InsertRecord(unsigned int pos, const Args&... data)
 	{
-		if (pos >= m_Records.size())
-			throw std::invalid_argument("Argument pos is out of range");
-
 		Record rec(pos);
 		(rec.AddData(data), ...);
 		m_Records.insert(m_Records.begin() + pos, std::move(rec));
@@ -231,10 +245,12 @@ namespace QRD
 	template<typename... Args>
 	inline std::vector<Record*> Table::GetRecordsByValues(const Args&... commandStrs)
 	{
-		TIMER;
-		std::vector<Record*> recs{};
 		std::vector<std::string_view> commands{ commandStrs... };
 
+		ValidateCommands(commands);
+
+		std::vector<Record*> recs{};
+		
 		std::string_view searchData;
 		std::string_view fieldName;
 		for (auto& cmd : commands)
@@ -278,6 +294,11 @@ namespace QRD
 			unsigned int recId = rec.GetRecordId();
 			m_Records.erase(m_Records.begin() + recId);
 			UpdateRecordIds(recId);
+			return;
 		}
+
+		std::stringstream ss;
+		ss << "Unable to delete record";
+		QRD_THROW(ObjectNotFoundException, ss.str());
 	}
 }

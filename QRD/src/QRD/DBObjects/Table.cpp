@@ -4,9 +4,33 @@
 
 namespace QRD
 {
-    Table::Table(const std::string& tableName, const int id)
+    Table::Table(const std::string& tableName, const short id)
         : m_TableName(tableName), m_Records{}, m_Fields{}, m_TableId(id)
     {
+    }
+
+    void Table::ValidateCommands(const std::vector<std::string_view>& commands)
+    {
+        for (auto& command : commands)
+        {
+            auto it = std::find(command.begin(), command.end(), ':');
+            unsigned int idCol = (unsigned int)std::distance(command.begin(), it);
+
+            if (it == command.end() || idCol > command.size() - 2 || idCol < 1)
+            {
+                std::stringstream ss;
+                ss << "Unable to find colon in string or colon position is invalid";
+                QRD_THROW(InvalidCommandException, ss.str());
+            }
+
+            std::string_view fieldName = command.substr(0, idCol - 1);
+            if (!FieldExists(fieldName))
+            {
+                std::stringstream ss;
+                ss << "Unable to find field with name " << fieldName;
+                QRD_THROW(ObjectNotFoundException, ss.str());
+            }
+        }
     }
 
     Field& Table::GetField(const std::string_view fieldName)
@@ -17,8 +41,18 @@ namespace QRD
                 return field;
         }
         std::stringstream ss;
-        ss << "Couldn't find field with name " << fieldName;
-        throw std::invalid_argument(ss.str());
+        ss << "Unable to find field with name " << fieldName;
+        QRD_THROW(ObjectNotFoundException, ss.str());
+    }
+
+    bool Table::FieldExists(const std::string_view fieldName)
+    {
+        for (auto& field : m_Fields)
+        {
+            if (field.GetFieldName() == fieldName)
+                return true;
+        }
+        return false;
     }
 
     void Table::DeleteField(const Field& field)
@@ -35,23 +69,26 @@ namespace QRD
 
     void Table::DeleteField(const std::string& fieldName)
     {
-        unsigned int fieldId;
+        unsigned int fieldId = -1;
         for(const auto& field : m_Fields)
         {
             if (field.GetFieldName() == fieldName)
             {
                 fieldId = field.GetFieldId();
                 m_Fields.erase(m_Fields.begin() + fieldId);
-                break;
+                UpdateFieldIds(fieldId);
+                return;
             }
         }
-        UpdateFieldIds(fieldId);
+        std::stringstream ss;
+        ss << "Unable to delete field with name " << fieldName;
+        QRD_THROW(ObjectNotFoundException, ss.str());
     }
 
     Record& Table::GetRecordById(const unsigned int id)
     {
         if (id > m_Records.size())
-            throw std::out_of_range("Vector subscription out of range");
+            QRD_THROW(OutOfRangeException, "Vector subscription out of range");
 
         return m_Records[id];
     }
@@ -74,7 +111,7 @@ namespace QRD
     {
         for (unsigned int i = indexOfElement; i < m_Records.size(); ++i)
         {
-            m_Records[i].SetRecordId(i);
+            m_Records[i].m_RecordId = i;
         }
     }
 
@@ -82,7 +119,7 @@ namespace QRD
     {
         for (unsigned int i = indexOfElement; i < m_Fields.size(); ++i)
         {
-            m_Fields[i].SetFieldId(i);
+            m_Records[i].m_RecordId = i;
         }
     }
 

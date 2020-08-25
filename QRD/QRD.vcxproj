@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\QRD\ExceptionHandlers\Exception.h" />
     <ClInclude Include="src\QRD\Database.h" />
     <ClInclude Include="src\QRD\DBObjects\Field.h" />
     <ClInclude Include="src\QRD\DBObjects\Record.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="src\QRD\DBObjects\Table.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\QRD\ExceptionHandlers\Exception.cpp" />
     <ClCompile Include="src\QRD\Database.cpp" />
     <ClCompile Include="src\QRD\DBObjects\Field.cpp" />
     <ClCompile Include="src\QRD\DBObjects\Record.cpp" />

@@ -11,12 +11,8 @@ namespace QRD
 	*/
 	class QRD_API Record
 	{
+		friend class Table;
 	public:
-		/**
-		* Default constructor for Record
-		*/
-		Record() = default;
-
 		/**
 		* Constructor for Record
 		*
@@ -55,18 +51,17 @@ namespace QRD
 		unsigned int GetRecordId() const { return m_RecordId; }
 
 		/**
-		* Setter for record id, automatically called when deleting a record
-		*
-		* @param index is the new record id
-		*/
-		void SetRecordId(unsigned int index) { m_RecordId = index; }
-
-		/**
 		* Deletes the data at fieldId
 		*
 		* @param fieldId is the id of the field where the data is stored
 		*/
 		void DeleteData(unsigned short fieldId);
+
+	private:
+		/**
+		* Default constructor for Record
+		*/
+		Record() = default;
 
 	private:
 		/**

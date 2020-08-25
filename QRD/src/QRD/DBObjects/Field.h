@@ -11,12 +11,8 @@ namespace QRD
 	*/
 	class QRD_API Field
 	{
+		friend class Table;
 	public:
-		/**
-		* Field class which stores the name and type of the field
-		*/
-		Field() = default;
-
 		/**
 		* Constructor for field object
 		*
@@ -46,13 +42,6 @@ namespace QRD
 		* @returns the field's type
 		*/
 		const DbTypes GetFieldType() const { return m_FieldType; }
-
-		/**
-		* Setter for field id, automatically called when deleting a field
-		*
-		* @param index is the new field id
-		*/
-		void SetFieldId(unsigned short index) { m_FieldId = index; }
 	
 		/**
 		* Comparison operator, compares all data in field
@@ -61,6 +50,12 @@ namespace QRD
 		* @returns true if both field objects hold the same data, else false
 		*/
 		bool operator==(const Field& other);
+
+	private:
+		/**
+		* Field class which stores the name and type of the field
+		*/
+		Field() = default;
 
 	private:
 		/**

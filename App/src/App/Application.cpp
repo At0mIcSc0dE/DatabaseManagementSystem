@@ -19,6 +19,10 @@ void Application::Run()
 	*	Decide whether the client should call RevalidateReferences or if QRD should detect vector resizing and call it itself
 	*	Test deletion
 	*/
+	
+	QRD::Table& tb1 = m_Database.CreateTable("Table1");
+
+	auto recs = tb1.GetRecordsByValues("s:5");
 
 
 	//QRD_LOG(totalAllocs);

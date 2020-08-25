@@ -2,6 +2,8 @@
 #include "Database.h"
 #include "Debug/Timer.h"
 
+#include "ExceptionHandlers/Exception.h"
+
 
 namespace QRD
 {
@@ -15,7 +17,11 @@ namespace QRD
 		};
 
 		if (!FileExists(filePath))
-			throw std::invalid_argument("Path to file not found!");
+		{
+			std::stringstream ss;
+			ss << "The specified path to the .dbs file is either invalid or doesn't exist\n[Path] " << filePath;
+			QRD_THROW(FileNotFoundException, ss.str());
+		}
 
 		m_Tables.reserve(tableAmnt);
 		ReadDb(fieldAmnt, recordAmnt);
@@ -38,7 +44,10 @@ namespace QRD
 			if (table.GetTableName() == tableName)
 				return table;
 		}
-		throw std::invalid_argument("Couldn't find table with name " + tableName);
+
+		std::stringstream ss;
+		ss << "Unable to find table with name " << tableName;
+		QRD_THROW(ObjectNotFoundException, ss.str());
 	}
 
 	bool Database::TableExists(const std::string& tableName)
@@ -64,8 +73,13 @@ namespace QRD
 				m_TablePosInVec.erase(m_TablePosInVec.begin() + tab.GetTableId());
 
 				UpdateTableIds(tableId);
+				return;
 			}
 		}
+
+		std::stringstream ss;
+		ss << "Unable to delete table with name " << table.GetTableName();
+		QRD_THROW(ObjectNotFoundException, ss.str());
 	}
 
 	void Database::DeleteTable(const std::string& tableName)
@@ -80,8 +94,13 @@ namespace QRD
 				m_Tables.erase(m_Tables.begin() + tab.GetTableId());
 				m_TablePosInVec.erase(m_TablePosInVec.begin() + tab.GetTableId());
 				UpdateTableIds(tableId);
+				return;
 			}
 		}
+
+		std::stringstream ss;
+		ss << "Unable to delete table with name " << tableName;
+		QRD_THROW(ObjectNotFoundException, ss.str());
 	}
 
 	void Database::UpdateTableIds(unsigned short indexOfDeletedElement)
@@ -89,14 +108,11 @@ namespace QRD
 		for (unsigned int i = indexOfDeletedElement; i < m_Tables.size(); ++i)
 		{
 			m_Tables[i].SetTableId(i);
-			//m_TablePosInVec[i].first->SetTableId(i);
 		}
 	}
 
 	void Database::ReadDb(size_t fieldAmnt, size_t recordAmnt)
 	{
-		TIMER;
-		QRD_ASSERT(m_DBFilePath != "");
 		std::ifstream reader(m_DBFilePath);
 
 		std::string line;
@@ -124,8 +140,6 @@ namespace QRD
 
 	void Database::WriteDb()
 	{
-		TIMER;
-		QRD_ASSERT(m_DBFilePath != "");
 		std::ofstream writer(m_DBFilePath);
 		writer << "TABLES: " << m_Tables.size() << '\n';
 
@@ -174,10 +188,14 @@ namespace QRD
 		
 		while (line != "}")
 		{
-			unsigned char typeIdx = (unsigned char)line.find(':') + 1;
+			char typeIdx = (unsigned char)line.find(':') + 1;
 
 			if (!typeIdx)
-				throw std::invalid_argument("Invalid index for type specifier!");
+			{
+				std::stringstream ss;
+				ss << "Invalid index for type specifier, index was" << (int)typeIdx;
+				QRD_THROW(FileReadException, ss.str());
+			}
 
 			if (line[typeIdx] == 'I')
 				table.AddField<NUMBER>(line.replace(line.size() - 8, line.size() - 1, "").replace(0, 4, ""));
