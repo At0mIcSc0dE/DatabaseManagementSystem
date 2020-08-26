@@ -176,6 +176,35 @@ namespace QRD
 		*/
 		void UpdateFieldIds(unsigned short indexOfDeletedElement);
 
+		/************************
+		**** DEBUG FUNCTIONS ****
+		*************************/
+		inline std::string ToString() const
+		{
+
+			std::stringstream ssRec;
+			std::stringstream ssFields;
+			for (auto& rec : m_Records)
+			{
+				ssRec << rec.ToString();
+			}
+
+			for (auto& field : m_Fields)
+			{
+				ssFields << field.ToString();
+			}
+
+			std::stringstream ss;
+			ss << "Table object: "
+				<< "\n\t[Table::Location]: " << this
+				<< "\n\t[Table::m_TableName]: " << m_TableName
+				<< "\n\t[Table::m_Records]: \n" << ssRec.str()
+				<< "\n\t[Table::m_Fields]: \n" << ssFields.str()
+				<< "\n\t[Table::m_TableId]: " << m_TableId << '\n';
+
+			return ss.str();
+		}
+
 	private:
 		/**
 		* Constructor for Table object

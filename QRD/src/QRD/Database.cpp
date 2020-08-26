@@ -8,7 +8,7 @@
 namespace QRD
 {
 	Database::Database(const std::string& filePath, size_t tableAmnt, size_t fieldAmnt, size_t recordAmnt)
-		: m_DBFilePath(filePath), m_Tables{}
+		: m_DBFilePath(filePath), m_Tables{}, m_FieldAllocCount(fieldAmnt), m_RecordAllocCount(recordAmnt)
 	{
 		bool(*FileExists)(const std::string& filePath) = [](const std::string& filePath)
 		{
@@ -30,6 +30,9 @@ namespace QRD
 	Table& Database::CreateTable(const std::string& tableName)
 	{
 		Table table(tableName, (const int)m_Tables.size());
+
+		table.m_Fields.reserve(m_FieldAllocCount);
+		table.m_Records.reserve(m_RecordAllocCount);
 
 		m_Tables.emplace_back(std::move(table));
 		m_TablePosInVec.emplace_back(&m_Tables[m_Tables.size() - 1], (unsigned int)(m_Tables.size() - 1));

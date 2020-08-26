@@ -33,7 +33,7 @@ namespace QRD
 		*
 		* @returns all the data in this record
 		*/
-		const std::vector<std::string>& GetRecordData() const { return m_Data; }
+		const std::vector<std::string>& GetRecordData() const { return m_RecordData; }
 
 		/**
 		* Compares records
@@ -57,6 +57,26 @@ namespace QRD
 		*/
 		void DeleteData(unsigned short fieldId);
 
+		/************************
+		**** DEBUG FUNCTIONS ****
+		*************************/
+		inline std::string ToString() const
+		{
+			std::stringstream ss2;
+			for (int i = 0; i < m_RecordData.size(); ++i)
+			{
+				ss2 << "\n\t  [" << i << "]: " << m_RecordData[i];
+			}
+
+			std::stringstream ss;
+			ss << "Record object: "
+				<< "\n\t[Record::Location]: " << this
+				<< "\n\t[Record::m_Data]: " << ss2.str()
+				<< "\n\t[Record::m_RecordId]: " << m_RecordId << '\n';
+
+			return ss.str();
+		}
+
 	private:
 		/**
 		* Default constructor for Record
@@ -67,7 +87,7 @@ namespace QRD
 		/**
 		* Datastructure for data in Record
 		*/
-		std::vector<std::string> m_Data;
+		std::vector<std::string> m_RecordData;
 
 		/**
 		* Represents id in Table::m_Records
@@ -81,7 +101,7 @@ namespace QRD
 	{
 		std::stringstream ss;
 		ss << data;
-		m_Data.emplace_back(ss.str());
+		m_RecordData.emplace_back(ss.str());
 	}
 }
 

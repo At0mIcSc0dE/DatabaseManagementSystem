@@ -124,6 +124,29 @@ namespace QRD
 		*/
 		const std::string& GetFilePath() const { return m_DBFilePath; }
 
+		/************************
+		**** DEBUG FUNCTIONS ****
+		*************************/
+		inline std::string ToString() const
+		{
+
+			std::stringstream ssT;
+			for (auto& table : m_Tables)
+			{
+				ssT << table.ToString();
+			}
+
+			std::stringstream ss;
+			ss << "Database object: "
+				<< "\n\t[Database::Location]: " << this
+				<< "\n\t[Database::m_DBFilePath]: " << m_DBFilePath
+				<< "\n\t[Database::m_Tables]: \n" << ssT.str()
+				<< "\n\t[Database::m_FieldAllocCount]: " << m_FieldAllocCount
+				<< "\n\t[Database::m_RecordAllocCount]: " << m_RecordAllocCount << '\n';
+
+			return ss.str();
+		}
+
 	private:
 		void ReadFields(std::ifstream& reader, std::string& line);
 		void ReadRecords(std::ifstream& reader, std::string& line);
@@ -146,6 +169,16 @@ namespace QRD
 		* File path to the .dbs file
 		*/
 		const std::string m_DBFilePath;
+
+		/**
+		* Number of Fields in m_Fields before references become invalid
+		*/
+		const size_t m_FieldAllocCount;
+
+		/**
+		* Number of Records in m_Records before references become invalid
+		*/
+		const size_t m_RecordAllocCount;
 	};
 
 

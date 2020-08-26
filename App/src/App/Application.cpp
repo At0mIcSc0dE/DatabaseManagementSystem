@@ -21,9 +21,13 @@ void Application::Run()
 	*/
 	
 	QRD::Table& tb1 = m_Database.CreateTable("Table1");
+	QRD::Field& fName = tb1.AddField<QRD::TEXT>("Name");
+	QRD::Field& fAge = tb1.AddField<QRD::NUMBER>("Age");
 
-	auto recs = tb1.GetRecordsByValues("s:5");
+	QRD::Record& rSimon = tb1.AddRecord("Simon", 15);
+	QRD::Record& rJonas = tb1.AddRecord("Jonas", 11);
 
+	std::cout << m_Database.ToString() << '\n';
 
 	//QRD_LOG(totalAllocs);
 }
