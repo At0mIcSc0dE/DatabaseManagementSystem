@@ -16,7 +16,6 @@ namespace QRD
 	class QRD_API Database
 	{
 	public:
-
 		/**
 		* Constructor for Database object
 		*
@@ -131,7 +130,6 @@ namespace QRD
 
 
 	private:
-		
 		/**
 		* Datastructure holding all tables and their corresponding records
 		*/
