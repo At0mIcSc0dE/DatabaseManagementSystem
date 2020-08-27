@@ -167,43 +167,21 @@ namespace QRD
 		*
 		* @param indexOfElement is the index where the element was before its deletion/after its creation
 		*/
-		void UpdateRecordIds(unsigned int indexOfDeletedElement);
+		void UpdateRecordIds(unsigned int indexOfElement);
 
 		/**
 		* Updates field id's after deleting a field
 		*
 		* @param indexOfElement is the index where the element was before its deletion/after its creation
 		*/
-		void UpdateFieldIds(unsigned short indexOfDeletedElement);
+		void UpdateFieldIds(unsigned short indexOfElement);
 
-		/************************
-		**** DEBUG FUNCTIONS ****
-		*************************/
-		inline std::string ToString() const
-		{
-
-			std::stringstream ssRec;
-			std::stringstream ssFields;
-			for (auto& rec : m_Records)
-			{
-				ssRec << rec.ToString();
-			}
-
-			for (auto& field : m_Fields)
-			{
-				ssFields << field.ToString();
-			}
-
-			std::stringstream ss;
-			ss << "Table object: "
-				<< "\n\t[Table::Location]: " << this
-				<< "\n\t[Table::m_TableName]: " << m_TableName
-				<< "\n\t[Table::m_Records]: \n" << ssRec.str()
-				<< "\n\t[Table::m_Fields]: \n" << ssFields.str()
-				<< "\n\t[Table::m_TableId]: " << m_TableId << '\n';
-
-			return ss.str();
-		}
+		/**
+		* Gives you a string with all information about this table object
+		*
+		* @returns debug string
+		*/
+		std::string ToString() const;
 
 	private:
 		/**
@@ -324,6 +302,13 @@ namespace QRD
 			m_Records.erase(m_Records.begin() + recId);
 			UpdateRecordIds(recId);
 			return;
+		}
+
+		if (recs.size() == 0)
+		{
+			std::stringstream ss;
+			ss << "Unable to find record";
+			QRD_THROW(ObjectNotFoundException, ss.str());
 		}
 
 		std::stringstream ss;

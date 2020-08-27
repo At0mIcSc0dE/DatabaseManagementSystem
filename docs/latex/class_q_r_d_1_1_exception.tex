@@ -1,0 +1,70 @@
+\hypertarget{class_q_r_d_1_1_exception}{}\doxysection{Q\+RD\+::Exception Class Reference}
+\label{class_q_r_d_1_1_exception}\index{QRD::Exception@{QRD::Exception}}
+
+
+{\ttfamily \#include $<$Exception.\+h$>$}
+
+Inheritance diagram for Q\+RD\+::Exception\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.680000cm]{class_q_r_d_1_1_exception}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const char $\ast$ \mbox{\hyperlink{class_q_r_d_1_1_exception_a8471118740c446c9cfab1e13cd6c250b}{what}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_r_d_1_1_exception_a62c31e0b99e98c669049e1dc69a2032a}{Exception}} (const char $\ast$file, const unsigned int line, const char $\ast$name, const char $\ast$message) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for any Q\+RD exception 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_r_d_1_1_exception_a62c31e0b99e98c669049e1dc69a2032a}\label{class_q_r_d_1_1_exception_a62c31e0b99e98c669049e1dc69a2032a}} 
+\index{QRD::Exception@{QRD::Exception}!Exception@{Exception}}
+\index{Exception@{Exception}!QRD::Exception@{QRD::Exception}}
+\doxysubsubsection{\texorpdfstring{Exception()}{Exception()}}
+{\footnotesize\ttfamily Q\+R\+D\+::\+Exception\+::\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file,  }\item[{const unsigned int}]{line,  }\item[{const char $\ast$}]{name,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+\mbox{\hyperlink{class_q_r_d_1_1_exception}{Exception}} constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & is the path to the file where the error occured \\
+\hline
+{\em line} & is the line where the error was thrown \\
+\hline
+{\em name} & is the name of the error (\mbox{\hyperlink{class_q_r_d_1_1_file_not_found_exception}{File\+Not\+Found\+Exception}}, ...) \\
+\hline
+{\em message} & is a message for more information about the error\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_q_r_d_1_1_exception_a8471118740c446c9cfab1e13cd6c250b}{Q\+R\+D\+::\+Exception\+::what()}} to get a string of information about the error 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_r_d_1_1_exception_a8471118740c446c9cfab1e13cd6c250b}\label{class_q_r_d_1_1_exception_a8471118740c446c9cfab1e13cd6c250b}} 
+\index{QRD::Exception@{QRD::Exception}!what@{what}}
+\index{what@{what}!QRD::Exception@{QRD::Exception}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char $\ast$ Q\+R\+D\+::\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+Overridden what function from std\+::exception
+
+\begin{DoxyReturn}{Returns}
+More information about the exception 
+\end{DoxyReturn}
+Returning ss.\+str().c\+\_\+str() would return an unusable pointer to memory because ss is a local variable
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Q\+R\+D/src/\+Q\+R\+D/\+Exception\+Handlers/Exception.\+h\item 
+Q\+R\+D/src/\+Q\+R\+D/\+Exception\+Handlers/Exception.\+cpp\end{DoxyCompactItemize}

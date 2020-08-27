@@ -57,25 +57,12 @@ namespace QRD
 		*/
 		void DeleteData(unsigned short fieldId);
 
-		/************************
-		**** DEBUG FUNCTIONS ****
-		*************************/
-		inline std::string ToString() const
-		{
-			std::stringstream ss2;
-			for (int i = 0; i < m_RecordData.size(); ++i)
-			{
-				ss2 << "\n\t  [" << i << "]: " << m_RecordData[i];
-			}
-
-			std::stringstream ss;
-			ss << "Record object: "
-				<< "\n\t[Record::Location]: " << this
-				<< "\n\t[Record::m_Data]: " << ss2.str()
-				<< "\n\t[Record::m_RecordId]: " << m_RecordId << '\n';
-
-			return ss.str();
-		}
+		/**
+		* Gives you a string with all information about this record object
+		* 
+		* @returns debug string
+		*/
+		std::string ToString() const;
 
 	private:
 		/**

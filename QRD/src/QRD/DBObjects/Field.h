@@ -51,28 +51,12 @@ namespace QRD
 		*/
 		bool operator==(const Field& other);
 
-		/************************
-		**** DEBUG FUNCTIONS ****
-		*************************/
-		inline std::string ToString() const
-		{
-
-			std::string fieldType = "Undefined type";
-			switch (m_FieldType)
-			{
-			case TEXT: fieldType = "Text (" + std::to_string(TEXT) + ')'; break;
-			case NUMBER: fieldType = "Number (" + std::to_string(NUMBER) + ')'; break;
-			}
-
-			std::stringstream ss;
-			ss << "Field object: "
-				<< "\n\t[Field::Location]: " << this
-				<< "\n\t[Field::m_FieldName]: " << m_FieldName
-				<< "\n\t[Field::m_FieldType]: " << fieldType
-				<< "\n\t[Field::m_FieldId]: " << m_FieldId << '\n';
-
-			return ss.str();
-		}
+		/**
+		* Gives you a string with all information about this field object
+		*
+		* @returns debug string
+		*/
+		std::string ToString() const;
 
 	private:
 		/**

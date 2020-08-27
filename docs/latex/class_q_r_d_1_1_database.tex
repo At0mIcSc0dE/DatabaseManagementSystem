@@ -1,0 +1,259 @@
+\hypertarget{class_q_r_d_1_1_database}{}\doxysection{Q\+RD\+::Database Class Reference}
+\label{class_q_r_d_1_1_database}\index{QRD::Database@{QRD::Database}}
+
+
+{\ttfamily \#include $<$Database.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_r_d_1_1_database_a624052e457b6d05f3bf618af5c02af21}{Database}} (const std\+::string \&file\+Path, size\+\_\+t table\+Amnt=10, size\+\_\+t field\+Amnt=10, size\+\_\+t record\+Amnt=20)
+\item 
+\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \& \mbox{\hyperlink{class_q_r_d_1_1_database_a723c8175f014545520e57422f9bfcfca}{Create\+Table}} (const std\+::string \&table\+Name)
+\item 
+\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \& \mbox{\hyperlink{class_q_r_d_1_1_database_acbecb2d386a9b9ee021d4263318e5bc1}{Get\+Table}} (const std\+::string \&table\+Name)
+\item 
+bool \mbox{\hyperlink{class_q_r_d_1_1_database_aed1284693709ae596e08ddaf055b1133}{Table\+Exists}} (const std\+::string \&table\+Name)
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_a04a6ea946a2ca377b0e3484c187433c0}{Delete\+Table}} (\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \&table)
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_af614555b76704f9f70499991e8797503}{Delete\+Table}} (const std\+::string \&table\+Name)
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_ade1adb19f8d861bc5bbff3d7bc736a81}{Update\+Table\+Ids}} (unsigned short index\+Of\+Deleted\+Element)
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_q_r_d_1_1_database_a2fc25058e2931d2fe3632798c7556ea0}{Revalidate\+References}} (Args \&... args)
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_af4604f7ea6f98c861b47452a529f0cab}{Read\+Db}} (size\+\_\+t field\+Amnt=10, size\+\_\+t record\+Amnt=20)
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_a872451d5b18a6589d1024624118dcc1e}{Write\+Db}} ()
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_ab1fafb836157735b36fc859427fb9af4}{Exit\+Db}} ()
+\item 
+void \mbox{\hyperlink{class_q_r_d_1_1_database_ae77b115e2e9f26bb391f46d9b27e5a47}{Reserve\+Tables}} (unsigned int table\+Amnt)
+\item 
+bool \mbox{\hyperlink{class_q_r_d_1_1_database_ac4f3c35537f55acd0273f2abc4ef4900}{operator==}} (const \mbox{\hyperlink{class_q_r_d_1_1_database}{Database}} \&other)
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} $>$ \& \mbox{\hyperlink{class_q_r_d_1_1_database_ac5076746b0f58646fc475cfcc5d4b81e}{Get\+Tables}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{class_q_r_d_1_1_database_a48f8d8b9af243eabe0bffd3434861298}{Get\+File\+Path}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_q_r_d_1_1_database_a109bffe9fd15e7130e83f39d1a559cd9}{To\+String}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main \mbox{\hyperlink{class_q_r_d_1_1_database}{Database}} class, should be instantiated by the client to manage your database 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_a624052e457b6d05f3bf618af5c02af21}\label{class_q_r_d_1_1_database_a624052e457b6d05f3bf618af5c02af21}} 
+\index{QRD::Database@{QRD::Database}!Database@{Database}}
+\index{Database@{Database}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{Database()}{Database()}}
+{\footnotesize\ttfamily Q\+R\+D\+::\+Database\+::\+Database (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path,  }\item[{size\+\_\+t}]{table\+Amnt = {\ttfamily 10},  }\item[{size\+\_\+t}]{field\+Amnt = {\ttfamily 10},  }\item[{size\+\_\+t}]{record\+Amnt = {\ttfamily 20} }\end{DoxyParamCaption})}
+
+Constructor for \mbox{\hyperlink{class_q_r_d_1_1_database}{Database}} object
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & is the path to the .dbs file \\
+\hline
+{\em table\+Amnt} & is the total amount of tables the program should allocate memory for \\
+\hline
+{\em field\+Amnt} & is the total amount of fields per table the program should allocate memory for \\
+\hline
+{\em record\+Amnt} & is the total amount of records per table the program should allocate memory for \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_a723c8175f014545520e57422f9bfcfca}\label{class_q_r_d_1_1_database_a723c8175f014545520e57422f9bfcfca}} 
+\index{QRD::Database@{QRD::Database}!CreateTable@{CreateTable}}
+\index{CreateTable@{CreateTable}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{CreateTable()}{CreateTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \& Q\+R\+D\+::\+Database\+::\+Create\+Table (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Creates a new table, adds it to m\+\_\+\+Data
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & is the name the table will have \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the newly created table 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_af614555b76704f9f70499991e8797503}\label{class_q_r_d_1_1_database_af614555b76704f9f70499991e8797503}} 
+\index{QRD::Database@{QRD::Database}!DeleteTable@{DeleteTable}}
+\index{DeleteTable@{DeleteTable}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{DeleteTable()}{DeleteTable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Delete\+Table (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Deletes the table
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & is the table\textquotesingle{}s name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_a04a6ea946a2ca377b0e3484c187433c0}\label{class_q_r_d_1_1_database_a04a6ea946a2ca377b0e3484c187433c0}} 
+\index{QRD::Database@{QRD::Database}!DeleteTable@{DeleteTable}}
+\index{DeleteTable@{DeleteTable}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{DeleteTable()}{DeleteTable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Delete\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \&}]{table }\end{DoxyParamCaption})}
+
+Deletes the table
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & is the table to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ab1fafb836157735b36fc859427fb9af4}\label{class_q_r_d_1_1_database_ab1fafb836157735b36fc859427fb9af4}} 
+\index{QRD::Database@{QRD::Database}!ExitDb@{ExitDb}}
+\index{ExitDb@{ExitDb}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{ExitDb()}{ExitDb()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Exit\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Writes everything stored in memory to file and destroys all database objects in memory \mbox{\Hypertarget{class_q_r_d_1_1_database_a48f8d8b9af243eabe0bffd3434861298}\label{class_q_r_d_1_1_database_a48f8d8b9af243eabe0bffd3434861298}} 
+\index{QRD::Database@{QRD::Database}!GetFilePath@{GetFilePath}}
+\index{GetFilePath@{GetFilePath}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{GetFilePath()}{GetFilePath()}}
+{\footnotesize\ttfamily const std\+::string\& Q\+R\+D\+::\+Database\+::\+Get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for .dbs file filepath
+
+\begin{DoxyReturn}{Returns}
+the path to the .dbs file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_acbecb2d386a9b9ee021d4263318e5bc1}\label{class_q_r_d_1_1_database_acbecb2d386a9b9ee021d4263318e5bc1}} 
+\index{QRD::Database@{QRD::Database}!GetTable@{GetTable}}
+\index{GetTable@{GetTable}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{GetTable()}{GetTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}} \& Q\+R\+D\+::\+Database\+::\+Get\+Table (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Finds the table by name
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & is the name of the table to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the found table, empty table object if not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ac5076746b0f58646fc475cfcc5d4b81e}\label{class_q_r_d_1_1_database_ac5076746b0f58646fc475cfcc5d4b81e}} 
+\index{QRD::Database@{QRD::Database}!GetTables@{GetTables}}
+\index{GetTables@{GetTables}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{GetTables()}{GetTables()}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{class_q_r_d_1_1_table}{Table}}$>$\& Q\+R\+D\+::\+Database\+::\+Get\+Tables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for all tables in .dbs file
+
+\begin{DoxyReturn}{Returns}
+all tables 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ac4f3c35537f55acd0273f2abc4ef4900}\label{class_q_r_d_1_1_database_ac4f3c35537f55acd0273f2abc4ef4900}} 
+\index{QRD::Database@{QRD::Database}!operator==@{operator==}}
+\index{operator==@{operator==}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Q\+R\+D\+::\+Database\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_q_r_d_1_1_database}{Database}} \&}]{other }\end{DoxyParamCaption})}
+
+Compares tables
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & is the other table object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the tables hold the same data else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_af4604f7ea6f98c861b47452a529f0cab}\label{class_q_r_d_1_1_database_af4604f7ea6f98c861b47452a529f0cab}} 
+\index{QRD::Database@{QRD::Database}!ReadDb@{ReadDb}}
+\index{ReadDb@{ReadDb}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{ReadDb()}{ReadDb()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Read\+Db (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{field\+Amnt = {\ttfamily 10},  }\item[{size\+\_\+t}]{record\+Amnt = {\ttfamily 20} }\end{DoxyParamCaption})}
+
+Reads database stored in file into memory \mbox{\Hypertarget{class_q_r_d_1_1_database_ae77b115e2e9f26bb391f46d9b27e5a47}\label{class_q_r_d_1_1_database_ae77b115e2e9f26bb391f46d9b27e5a47}} 
+\index{QRD::Database@{QRD::Database}!ReserveTables@{ReserveTables}}
+\index{ReserveTables@{ReserveTables}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{ReserveTables()}{ReserveTables()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Reserve\+Tables (\begin{DoxyParamCaption}\item[{unsigned int}]{table\+Amnt }\end{DoxyParamCaption})}
+
+Function should be called before creating any tables to allocate more memory for the vector of tables
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Amnt} & is the amount of tables the client is going to create \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_a2fc25058e2931d2fe3632798c7556ea0}\label{class_q_r_d_1_1_database_a2fc25058e2931d2fe3632798c7556ea0}} 
+\index{QRD::Database@{QRD::Database}!RevalidateReferences@{RevalidateReferences}}
+\index{RevalidateReferences@{RevalidateReferences}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{RevalidateReferences()}{RevalidateReferences()}}
+{\footnotesize\ttfamily template$<$typename ... Args$>$ \\
+void Q\+R\+D\+::\+Database\+::\+Revalidate\+References (\begin{DoxyParamCaption}\item[{Args \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Revalidates references which point to the wrong address because of vector resizing
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & are all the invalid references with type \mbox{\hyperlink{class_q_r_d_1_1_table}{Table}}; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+this function doesn\textquotesingle{}t work correctly if you deleted a table during the current session 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_aed1284693709ae596e08ddaf055b1133}\label{class_q_r_d_1_1_database_aed1284693709ae596e08ddaf055b1133}} 
+\index{QRD::Database@{QRD::Database}!TableExists@{TableExists}}
+\index{TableExists@{TableExists}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{TableExists()}{TableExists()}}
+{\footnotesize\ttfamily bool Q\+R\+D\+::\+Database\+::\+Table\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Checks if the table already exists
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & is the name of the table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the table exists else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_a109bffe9fd15e7130e83f39d1a559cd9}\label{class_q_r_d_1_1_database_a109bffe9fd15e7130e83f39d1a559cd9}} 
+\index{QRD::Database@{QRD::Database}!ToString@{ToString}}
+\index{ToString@{ToString}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily std\+::string Q\+R\+D\+::\+Database\+::\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gives you a string with all information about this database object
+
+\begin{DoxyReturn}{Returns}
+debug string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_ade1adb19f8d861bc5bbff3d7bc736a81}\label{class_q_r_d_1_1_database_ade1adb19f8d861bc5bbff3d7bc736a81}} 
+\index{QRD::Database@{QRD::Database}!UpdateTableIds@{UpdateTableIds}}
+\index{UpdateTableIds@{UpdateTableIds}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{UpdateTableIds()}{UpdateTableIds()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Update\+Table\+Ids (\begin{DoxyParamCaption}\item[{unsigned short}]{index\+Of\+Deleted\+Element }\end{DoxyParamCaption})}
+
+Updates table id\textquotesingle{}s after deleting a table
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+Of\+Deleted\+Element} & is the index where the element was before it\textquotesingle{}s deletion \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_d_1_1_database_a872451d5b18a6589d1024624118dcc1e}\label{class_q_r_d_1_1_database_a872451d5b18a6589d1024624118dcc1e}} 
+\index{QRD::Database@{QRD::Database}!WriteDb@{WriteDb}}
+\index{WriteDb@{WriteDb}!QRD::Database@{QRD::Database}}
+\doxysubsubsection{\texorpdfstring{WriteDb()}{WriteDb()}}
+{\footnotesize\ttfamily void Q\+R\+D\+::\+Database\+::\+Write\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Writes the database stored in memory to file 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Q\+R\+D/src/\+Q\+R\+D/Database.\+h\item 
+Q\+R\+D/src/\+Q\+R\+D/Database.\+cpp\end{DoxyCompactItemize}
