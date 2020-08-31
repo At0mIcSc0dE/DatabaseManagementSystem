@@ -1,4 +1,6 @@
-#include "pch.h"
+#include "../pch.h"
+
+#ifdef _DEBUG
 #include "Logger.h"
 
 
@@ -13,3 +15,4 @@ namespace QRD
 
 }
 
+#endif

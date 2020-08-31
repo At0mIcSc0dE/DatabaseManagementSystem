@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef _DEBUG
+
 #include "pch.h"
 #include "Base.h"
 #include <fstream>
@@ -35,17 +37,18 @@ namespace QRD
 
 }
 
+#endif
 
-#if QRD_LOG_ACTIVE
-	template<typename T>
-	inline void QRD_LOG(const T& text)
-	{
-		QRD::Logger::Log((*(T*)&text), "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt");
-	}
-	#define QRD_LOG_CLEAR() QRD::Logger::Init("D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
+#if QRD_LOG_ACTIVE && defined(_DEBUG)
+template<typename T>
+inline void QRD_LOG(const T& text)
+{
+	QRD::Logger::Log((*(T*)&text), "D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt");
+}
+#define QRD_LOG_CLEAR() QRD::Logger::Init("D:\\dev\\Cpp\\Projects\\DatabaseManagementSystem\\log.txt")
 #else
-	template<typename T>
-	inline void QRD_LOG(const T& text) {}
-	//#define QRD_LOG(text)
-	#define QRD_LOG_CLEAR()
+template<typename T>
+inline void QRD_LOG(const T& text) {}
+//#define QRD_LOG(text)
+#define QRD_LOG_CLEAR()
 #endif

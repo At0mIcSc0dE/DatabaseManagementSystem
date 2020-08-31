@@ -1,4 +1,6 @@
 #include "pch.h"
+
+#ifdef _DEBUG
 #include "Timer.h"
 
 
@@ -17,3 +19,4 @@ namespace QRD
 	}
 }
 
+#endif

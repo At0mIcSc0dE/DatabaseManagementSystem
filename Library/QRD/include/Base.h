@@ -21,8 +21,8 @@
 /**
 * Set to 0 to disable logging or timing
 */
-#define QRD_LOG_ACTIVE 1
-#define QRD_TIMER_ACTIVE 1
+#define QRD_LOG_ACTIVE 0
+#define QRD_TIMER_ACTIVE 0
 
 #ifdef _DEBUG
 	#define QRD_ASSERT(x) if(!(x)) __debugbreak();
