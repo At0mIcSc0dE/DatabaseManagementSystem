@@ -1,3 +1,5 @@
+#include <sstream>
+#include <fstream>
 
 #include "Database.h"
 #include "../Debug/Timer.h"

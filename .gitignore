@@ -1,4 +1,3 @@
-bin/
 bin-int/
 .vs/
 bin/Debug-Win32/QRDUnitTests.dll
