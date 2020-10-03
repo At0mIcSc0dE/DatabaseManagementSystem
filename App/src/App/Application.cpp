@@ -19,22 +19,10 @@ void Application::Run()
 	*	Test deletion
 	*/
 
-	try
-	{
-		QRD::Table& tb1 = m_Database.GetTable("Table1");
-	}
-	catch (QRD::ObjectNotFoundException& e)
-	{
-		std::cout << e.what() << '\n';
-	}
+	m_Database.Clear();
+	m_Database.SetFilePath("D:\\dev\\ProgramFiles\\DBMS\\DB2.dbs");
+	m_Database.ReadDb(m_Database.GetFieldAllocCount(), m_Database.GetRecordAllocCount());
 
-	//QRD::Field& fName = tb1.AddField<QRD::TEXT>("Name");
-	//QRD::Field& fAge = tb1.AddField<QRD::NUMBER>("Age");
-
-	//QRD::Record& rSimon = tb1.AddRecord("Simon", 15);
-	//QRD::Record& rJonas = tb1.AddRecord("Jonas", 11);
-
-	//std::cout << m_Database.ToString() << '\n';
-
+	m_Database.ExitDb();
 	//QRD_LOG(totalAllocs);
 }

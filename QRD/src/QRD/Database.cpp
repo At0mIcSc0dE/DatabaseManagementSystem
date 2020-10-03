@@ -201,6 +201,17 @@ namespace QRD
 		return ss.str();
 	}
 
+	void Database::SetFilePath(const std::string& newPath)
+	{
+		m_DBFilePath = newPath;
+	}
+
+	void Database::Clear()
+	{
+		m_Tables.clear();
+		m_TablePosInVec.clear();
+	}
+
 	void Database::ReadFields(std::ifstream& reader, std::string& line)
 	{
 		Table& table = m_Tables[m_Tables.size() - 1];
