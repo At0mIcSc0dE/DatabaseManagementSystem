@@ -1,11 +1,13 @@
 #pragma once
 
-#include "pch.h"
-#include "Base.h"
+#include <vector>
 
-#include "DBObjects/Table.h"
-#include "DBObjects/Record.h"
-#include "DBObjects/Field.h"
+
+#include "../Base.h"
+
+#include "../DBObjects/Table.h"
+#include "../DBObjects/Record.h"
+#include "../DBObjects/Field.h"
 
 
 namespace QRD

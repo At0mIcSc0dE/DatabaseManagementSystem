@@ -1,11 +1,11 @@
 #pragma once
 
-#include "pch.h"
-#include "Base.h"
+
+#include "../Base.h"
 #include "Field.h"
 #include "Record.h"
 
-#include "QRD/ExceptionHandlers/Exception.h"
+#include "../ExceptionHandlers/Exception.h"
 
 
 namespace QRD

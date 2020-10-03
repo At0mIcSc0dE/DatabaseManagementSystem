@@ -2,8 +2,8 @@
 
 #ifdef _DEBUG
 
-#include "pch.h"
-#include "Base.h"
+
+#include "../Base.h"
 #include <fstream>
 #include <ctime>
 #include <sstream>

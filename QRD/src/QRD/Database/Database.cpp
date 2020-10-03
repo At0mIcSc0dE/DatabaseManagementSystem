@@ -1,8 +1,8 @@
-#include "pch.h"
-#include "Database.h"
-#include "Debug/Timer.h"
 
-#include "ExceptionHandlers/Exception.h"
+#include "Database.h"
+#include "../Debug/Timer.h"
+
+#include "../ExceptionHandlers/Exception.h"
 
 
 namespace QRD
