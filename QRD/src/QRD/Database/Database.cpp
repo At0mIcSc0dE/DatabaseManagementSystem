@@ -1,5 +1,6 @@
 #include <sstream>
 #include <fstream>
+#include <algorithm>
 
 #include "Database.h"
 #include "../Debug/Timer.h"
@@ -174,12 +175,22 @@ namespace QRD
 					auto data = record.GetRecordData()[j];
 					
 					// Print newline character(\n) and not a new line
-					size_t idx = data.find('\n');
-					if (idx != std::string::npos)
+					size_t pos = data.find("\n");
+					while (pos != std::string::npos)
 					{
-						data.erase(data.begin() + idx);
-						data.insert(data.begin() + idx, (char)0x5c);
-						data.insert(data.begin() + idx + 1, (char)0x6e);
+						data.erase(data.begin() + pos);
+						data.insert(pos, "\\n");
+
+						pos = data.find("\n");
+					}
+
+					pos = data.find("\r");
+					while (pos != std::string::npos)
+					{
+						data.erase(data.begin() + pos);
+						data.insert(pos, "\\r");
+
+						pos = data.find("\r");
 					}
 
 					writer << "    " << data << '\n';
@@ -278,9 +289,19 @@ namespace QRD
 			Record& rec = table.AddRecord();
 			while (line != "}")
 			{
-				size_t idx = line.find((char)0x5c);
-				if(idx != std::string::npos && line[idx + 1] == 'n')
-					line.replace(line.begin() + idx, line.begin() + idx + 2, "\n");
+				size_t pos = line.find("\\n");
+				while (pos != std::string::npos)
+				{
+					line.replace(pos, 2, "\n");
+					pos = line.find("\\n");
+				}
+
+				pos = line.find("\\r");
+				while (pos != std::string::npos)
+				{
+					line.replace(pos, 2, "\r");
+					pos = line.find("\\r");
+				}
 
 				rec.AddData(line.replace(0, 4, ""));
 				std::getline(reader, line);
