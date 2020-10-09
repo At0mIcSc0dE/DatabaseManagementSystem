@@ -33,7 +33,7 @@ inline void Logger::FillOutputStr(std::string& msg, const T& arg)
 	//if (idxOfNum == std::string::npos)
 	//	throw std::invalid_argument("Too many/few arguments to fill string");
 
-	std::stringstream ss;
+	std::ostringstream ss;
 	ss << arg;
 	msg.replace(idxOfNum - 1, idxOfNum + 1, ss.str());
 

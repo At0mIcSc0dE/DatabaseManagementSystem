@@ -19,9 +19,10 @@ void Application::Run()
 	*	Test deletion
 	*/
 
-	m_Database.Clear();
-	m_Database.SetFilePath("D:\\dev\\ProgramFiles\\DBMS\\DB2.dbs");
-	m_Database.ReadDb(m_Database.GetFieldAllocCount(), m_Database.GetRecordAllocCount());
+	QRD::Table& tb1 = m_Database.GetTable("tb1");
+	//tb1.AddRecord("Hello\nWorld", 3);
+
+	std::cout << tb1.GetRecordById(2).GetRecordData()[0] << '\n';
 
 	m_Database.ExitDb();
 	//QRD_LOG(totalAllocs);
